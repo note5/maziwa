@@ -6,7 +6,7 @@
                 <div class="headline">Put your Name, Email and password to register</div>
               </v-card-title>
                <v-divider></v-divider>
-               
+               <v-card-text>
               <v-form v-model="valid">
                 <v-text-field
                   v-model="name"
@@ -40,6 +40,7 @@
                   required
                 ></v-text-field>
                  </v-form>
+               </v-card-text>
                <v-card-actions>
                  <v-checkbox
                   v-model="checkbox"
@@ -47,7 +48,7 @@
                   label="Do you agree with the terms and conditions?"
                   required>
                   </v-checkbox>
-              <v-btn  flat color="success">Register</v-btn>
+              <v-btn  color="success">Register</v-btn>
             </v-card-actions>
       </v-card>
         </v-flex>
