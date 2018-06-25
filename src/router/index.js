@@ -39,5 +39,7 @@ export default new Router({
       name: 'CowModal',
       component: CowModal
     }
-  ]
+  ],
+  mode:'history',
+  shabang:false
 })
