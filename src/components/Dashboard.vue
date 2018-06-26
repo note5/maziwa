@@ -92,7 +92,7 @@
    <v-flex xs12 sm8>
      <v-card class="mr-1">
         <!-- ---------Date picker  -------->
-    <v-card flat>
+    <v-card flat >
       <v-layout row wrap>
        <v-flex xs12 sm6>
          <v-menu
@@ -104,7 +104,7 @@
         lazy
         transition="scale-transition"
         offset-y
-        full-width
+
     
       >
         <v-text-field
@@ -166,17 +166,26 @@
        </v-card-title>
        <v-divider></v-divider>
         <div>
-         <v-card>
+            <div>
+            <p>Chelel</p>
     <v-progress-linear value="75" height="10" color="secondary"></v-progress-linear>
-</v-card>
-
+</div>
+<div>
+    <p>Baringo</p>
     <v-progress-linear value="60" height="10" color="success"></v-progress-linear>
-
+</div>
+<div>
+    <p>mochongoi</p>
     <v-progress-linear value="45" height="10" color="info"></v-progress-linear>
-
+</div>
+<div>
+    <p>Pembe</p>
     <v-progress-linear value="30" height="10" color="warning"></v-progress-linear>
-
+</div>
+<div>
+    <p>mardadi</p>
     <v-progress-linear value="15" height="10" color="error"></v-progress-linear>
+</div>
   </div>
      </v-card>
    </v-flex>
