@@ -1,6 +1,90 @@
 <template>
-<v-layout row>
-  <v-flex xs12 sm6 offset-sm3>
+  <div>
+    <v-container>
+  <v-layout row wrap>
+   <v-flex xs12 sm8>
+     <v-card class="mr-1">
+        <!-- ---------Date picker  -------->
+    <v-card flat>
+      <v-layout row wrap>
+       <v-flex xs12 sm6>
+         <v-menu
+        ref="menu1"
+        :close-on-content-click="false"
+        v-model="menu1"
+        :nudge-right="40"
+        :return-value.sync="date1"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+    
+      >
+        <v-text-field
+          slot="activator"
+          v-model="date1"
+          label="select start date"
+          prepend-icon="event"
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="date1" width="200" no-title scrollable>
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="menu1 = false">Cancel</v-btn>
+          <v-btn flat color="primary" @click="date_picked(date1)">OK</v-btn>
+        </v-date-picker>
+      </v-menu>
+       </v-flex>
+    <v-flex xs12 sm6>
+      <v-menu
+        ref="menu2"
+        :close-on-content-click="false"
+        v-model="menu2"
+        :nudge-right="40"
+        :return-value.sync="date2"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        
+      >
+        <v-text-field
+          slot="activator"
+          v-model="date2"
+          label="select end date"
+          prepend-icon="event"
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="date2" width="200" no-title scrollable>
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="menu2 = false">Cancel</v-btn>
+          <v-btn flat color="primary" @click="date_picked('menu2',date2)">OK</v-btn>
+        </v-date-picker>
+      </v-menu>
+  </v-flex>
+</v-layout>
+</v-card>
+        <!--End date menu-->
+       <v-card-title primary-title>
+         <h2>Milk Chart for the Month</h2>
+       </v-card-title>
+             <canvas ref="chart"></canvas>
+     </v-card>
+   </v-flex>
+  
+     <v-flex xs12 sm4 >
+       <v-card class="ml-1" height="100%">
+  
+       <v-card-title primary-title>
+         <h2>Top Performers </h2>
+       </v-card-title>
+             <canvas ref="gg"></canvas>
+     </v-card>
+   </v-flex>
+ </v-layout>
+</v-container>
+<v-container>
+<v-layout row wrap>
+  <v-flex xs12 sm12>
     <div class="tbs">
   <v-card>
     <v-card-title>
@@ -35,6 +119,8 @@
     </div>
   </v-flex>
 </v-layout>
+</v-container>
+</div>
 </template>
 
 <script>
@@ -148,7 +234,85 @@ export default {
           }
         ]
       }
-    }
+    },
+    mounted() {
+            var chart = this.$refs.chart;
+            var gg = this.$refs.gg;
+            var ggt = gg.getContext("2d")
+            var ctx = chart.getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            var myChart = new Chart(ggt, {
+                type: 'line',
+                data: {
+                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
   }
 </script>
 

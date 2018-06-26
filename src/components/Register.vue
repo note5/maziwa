@@ -1,13 +1,13 @@
 <template>
       <v-layout align-center>
         <v-flex xs12 sm6 offset-sm3>
-          <v-card >
+          <v-card  colo>
              <v-card-title class="justify-center" primary-title>
                 <div class="headline">Put your Name, Email and password to register</div>
               </v-card-title>
+              <v-card-text>
                <v-divider></v-divider>
-               <v-card-text>
-              <v-form v-model="valid">
+               <v-form v-model="valid">
                 <v-text-field
                   v-model="name"
                   :rules="nameRules"

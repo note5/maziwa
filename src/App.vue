@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app >
     <v-navigation-drawer
       v-model="drawer"
       fixed
@@ -95,11 +95,15 @@
           <v-btn flat to="/dashboard">Dashboard</v-btn>
     </v-toolbar-items>
     </v-toolbar>
-      <v-container  fluid  fill-height style="margin-top:60px;">
-        
+    <v-content>
+      <v-container  fluid  fill-height>  
+        <v-layout row wrap>
+          <v-flex xs12>      
              <router-view></router-view>
-
+          </v-flex>
+        </v-layout>
       </v-container>
+    </v-content>
     <v-footer app fixed>
        <span>&copy; Bart</span>
     </v-footer>

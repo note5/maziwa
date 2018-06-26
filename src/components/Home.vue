@@ -1,5 +1,5 @@
 <template>
-    <v-content>
+  <div>
       <section>
         <v-parallax :src="require('@/assets/cows1.jpg')"  class="cpow" height="800">
           <v-layout
@@ -145,7 +145,7 @@
           </v-layout>
         </v-container>
       </section>
-    </v-content>
+    </div>
 </template>
 
 <script>

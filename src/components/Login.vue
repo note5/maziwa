@@ -1,7 +1,8 @@
 <template>
+  <v-container style="margin-top:64px">
       <v-layout align-center>
         <v-flex xs12 sm6 offset-sm3>
-          <v-card flat="true">
+          <v-card >
       
              <v-card-title class="justify-center" primary-title>
                 <div class="headline">Put your Email and password to Login</div>
@@ -26,12 +27,11 @@
                 ></v-text-field>
                  </v-form>
               </v-card-text>
-              
-              <v-btn block  color="success">Login</v-btn>
-           
+            <v-btn block  color="success">Login</v-btn>
       </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
 </template>
 
 <script>
