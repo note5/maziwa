@@ -164,7 +164,20 @@
        <v-card-title primary-title>
          <h2>Top Performers </h2>
        </v-card-title>
-             <canvas ref="gg"></canvas>
+       <v-divider></v-divider>
+        <div>
+         <v-card>
+    <v-progress-linear value="75" height="10" color="secondary"></v-progress-linear>
+</v-card>
+
+    <v-progress-linear value="60" height="10" color="success"></v-progress-linear>
+
+    <v-progress-linear value="45" height="10" color="info"></v-progress-linear>
+
+    <v-progress-linear value="30" height="10" color="warning"></v-progress-linear>
+
+    <v-progress-linear value="15" height="10" color="error"></v-progress-linear>
+  </div>
      </v-card>
    </v-flex>
  </v-layout>
@@ -223,8 +236,8 @@
         name: 'app',
         mounted() {
             var chart = this.$refs.chart;
-            var gg = this.$refs.gg;
-            var ggt = gg.getContext("2d")
+            // var gg = this.$refs.gg;
+            // var ggt = gg.getContext("2d")
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
                 type: 'line',
