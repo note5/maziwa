@@ -6,7 +6,7 @@ import Home from '@/components/Home'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
-import CowModal from '@/components/CowModal'
+import view_cow from '@/components/view_cow'
 //
 
 
@@ -35,9 +35,9 @@ export default new Router({
       component: Dashboard
     },
     {
-      path: '/CowModal',
-      name: 'CowModal',
-      component: CowModal
+      path: '/view_cow',
+      name: 'view_cow',
+      component: view_cow
     }
   ],
   mode:'history',
