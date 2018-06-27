@@ -117,7 +117,7 @@
         <v-date-picker v-model="date1" width="200" no-title scrollable>
           <v-spacer></v-spacer>
           <v-btn flat color="primary" @click="menu1 = false">Cancel</v-btn>
-          <v-btn flat color="primary" @click="date_picked(date1)">OK</v-btn>
+          <v-btn flat color="primary" @click="date_picked('menu1',date1)">OK</v-btn>
         </v-date-picker>
       </v-menu>
        </v-flex>
@@ -165,6 +165,7 @@
          <h2>Top Performers </h2>
        </v-card-title>
        <v-divider></v-divider>
+       <v-card-text>
         <div>
             <div>
             <p>Chelel</p>
@@ -187,43 +188,67 @@
     <v-progress-linear value="15" height="10" color="error"></v-progress-linear>
 </div>
   </div>
+</v-card-text>
      </v-card>
    </v-flex>
  </v-layout>
-
+<!-- Pie chart section -->
  <v-layout row wrap>
      <v-flex xs12 sm4>
+      <v-card class="mr-2 mt-2 mb-2 ">
+        <v-card flat>
+            <v-card-title primary-title>
+               <h4 style="color:teal">Sick cows in the last 30 days</h4>
+            </v-card-title>
+         </v-card>
+       <v-card-text class="text-xs-center">
+         <v-progress-circular
+              :size="100" :width="15":rotate="360":value="value"color="teal">
+          {{ value }}
+         </v-progress-circular>
+       </v-card-text>  
+     </v-card>
+    </v-flex>
+
+    <v-flex xs12 sm4>
      <v-card class="mr-2 mt-2 mb-2 ">
-       <v-card-title primary-title>
-         <h2>Pie chart one</h2>
-       </v-card-title>
-            
+        <v-card flat>
+            <v-card-title primary-title>
+               <h4 style="color:green">Cows milked in the last 30 days</h4>
+            </v-card-title>
+         </v-card>
+       <v-card-text class="text-xs-center">
+         <v-progress-circular
+              :size="100" :width="15":rotate="360":value="value"color="green">
+          {{ value }}
+         </v-progress-circular>
+       </v-card-text>  
      </v-card>
    </v-flex>
    <v-flex xs12 sm4>
      <v-card class="mr-2 mt-2 mb-2 ">
-       <v-card-title primary-title>
-         <h2>Pie Chart 2</h2>
-       </v-card-title>
-            
+        <v-card flat>
+            <v-card-title primary-title>
+               <h4 style="color:blue">Pregnant cows in the last 30 days</h4>
+            </v-card-title>
+         </v-card>
+       <v-card-text class="text-xs-center">
+         <v-progress-circular
+              :size="100" :width="15":rotate="360":value="value"color="blue">
+          {{ value }}
+         </v-progress-circular>
+       </v-card-text>  
      </v-card>
-   </v-flex>
-   <v-flex xs12 sm4>
-     <v-card class="mr-2 mt-2 mb-2 ">
-       <v-card-title primary-title>
-         <h2>Pie chart 3</h2>
-       </v-card-title>
-            
-     </v-card>
+     <!-- end of pie charts -->
    </v-flex>
  </v-layout>
  <v-layout row wrap>
    <v-flex xs12 sm6>
      <v-card class="mr-1">
+        
        <v-card-title primary-title>
          <h2>Feed Summary For 30 days</h2>
        </v-card-title>
-            
      </v-card>
    </v-flex>  
      <v-flex xs12 sm6 >
@@ -244,47 +269,17 @@
     export default {
         name: 'app',
         mounted() {
+
+       this.interval = setInterval(() => {
+        if (this.value === 100) {
+          return (this.value = 0)
+        }
+        this.value += 10
+      }, 1000)
+
             var chart = this.$refs.chart;
-            // var gg = this.$refs.gg;
-            // var ggt = gg.getContext("2d")
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-            var myChart = new Chart(ggt, {
                 type: 'line',
                 data: {
                     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -326,14 +321,17 @@
             date2:null,
             menu1: false,
             menu2:false,
-            date: null
+            date: null,
+            //// chart
+             interval: {},
+             value: 0
         }),
         methods:{
-        //     date_picked(x,date){
-        //         y =date
-        //        console.log(x)
-        //        console.log(this.$refs.x.y)
-        //     },
+            date_picked(x,date){
+                var y = date
+               console.log(x)
+               this.$refs[x].save(date)
+            },
         navTo({"name":route}){
             this.$router.push(route)
          }
