@@ -192,10 +192,10 @@ export default {
   methods:{
     navigateTo({"name":route}){
       this.$router.push(route)
-      console.log('pressed',route)
+      //console.log('pressed',route)
     },
     logout(){
-      console.log('logout')
+     // console.log('logout')
     }
   },
   data(){
