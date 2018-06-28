@@ -87,10 +87,12 @@
       </section>
 
       <section>
-        <v-parallax :src="require('@/assets/plane.jpg')" height="380">
+        <v-parallax :src="require('@/assets/cows1.jpg')" height="380">
           <v-layout column align-center justify-center>
-            <div>Web development has never been easier</div>
-            <em>Kick-start your application today</em>
+            <div style="background-color:black;">
+            <div>Market your Farm</div>
+            <p>Create a public profile about your farm</p>
+            </div>
           </v-layout>
         </v-parallax>
       </section>
@@ -101,12 +103,11 @@
             <v-flex xs12 sm4>
               <v-card class="elevation-0 transparent">
                 <v-card-title primary-title class="layout justify-center">
-                  <div class="headline">Company info</div>
+                  <div class="headline">Inspiration</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                  Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                  I am an Engineer brought up and resourced by dairy cows and now I see the potential
+                  of data analytics in dairy farming. 
                 </v-card-text>
               </v-card>
             </v-flex>
@@ -116,7 +117,7 @@
                   <div class="headline">Contact us</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
+                <a href="DairyAnalytics.com"> DairyAnalytics.com</a>
                 </v-card-text>
                 <v-list class="transparent">
                     <v-list-tile>
@@ -124,7 +125,7 @@
                           <v-icon class="blue--text text--lighten-2">phone</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                          <v-list-tile-title>777-867-5309</v-list-tile-title>
+                          <v-list-tile-title>0724XXXXXX</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile>
@@ -132,7 +133,7 @@
                           <v-icon class="blue--text text--lighten-2">place</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                          <v-list-tile-title>Chicago, US</v-list-tile-title>
+                          <v-list-tile-title>Nairobi, Ke</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile>
@@ -140,7 +141,7 @@
                           <v-icon class="blue--text text--lighten-2">email</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                          <v-list-tile-title>john@vuetifyjs.com</v-list-tile-title>
+                          <v-list-tile-title>dairyanalytics@gmail.com</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
