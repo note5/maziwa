@@ -209,6 +209,7 @@ export default {
 
 <style>
  .subheader_color{
-   color:rgb(129, 199, 132) !important;
+   color: green;
+   /* color:rgb(129, 199, 132) !important; */
  }
 </style>

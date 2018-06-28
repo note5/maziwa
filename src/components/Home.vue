@@ -7,8 +7,9 @@
             align-center
             justify-center >
             <img :src="require('@/assets/cpows2.jpg')" height="200">
-            <h1>Dairy Analytics</h1>
-            <div class="subheading mb-3 text-xs-center">Made by a farmer for farmers</div>
+            <h1 style="background:black;">Dairy Analytics</h1>
+            <div class="subheading mb-3 text-xs-center" 
+            style="background:black;">Made by a farmer for farmers</div>
           </v-layout>
         </v-parallax>
       </section>
@@ -22,7 +23,7 @@
         >
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">The platform that laverages your dairy data into insights</h2>
+              <h2 class="headline">The platform that shows the unknowns</h2>
               <!-- <span class="subheading">
                 Cras facilisis mi vitae nunc 
               </span> -->
@@ -32,9 +33,9 @@
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
+                  <v-card class="elevation-0 transparent" style="heigh:max-content%">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">trending_up</v-icon>
+                      <v-icon x-large class="green--text text--lighten-2">trending_up</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
                       <div class="headline text-xs-center">Visualize Milk Production</div>
@@ -49,30 +50,33 @@
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                      <v-icon x-large class="green--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
                       <div class="headline">Keep track of feeds consumed</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      This platform offers the ability to delegently keep the feeding patterns of your animals
+                      and help create a visual representation for all the animals under feeding, One can also compare
+                      the daily amount of feeds against the milk produced, this will create better insights about the costs and and 
+                      food variations over time. 
                     </v-card-text>
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
+                      <v-icon x-large class="green--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Completely Open Sourced</div>
+                      <div class="headline text-xs-center">Know every aspects of your animals life</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                     Through this application, the state, health and reproductive health of your precious
+                     animals are well recorded and presented for quick references, the vetenarian, diseases,treatments
+                     and vaccinations for each animal will be recored and hence create a record that can be used when needed 
+                     later on.
+             
                     </v-card-text>
                   </v-card>
                 </v-flex>
