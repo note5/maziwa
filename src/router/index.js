@@ -1,12 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-//routes to components
+////routes to components
+
+//general components
 import Home from '@/components/Home'
-import Register from '@/components/Register'
-import Login from '@/components/Login'
-import Dashboard from '@/components/Dashboard'
-import view_cow from '@/components/view_cow'
+import profile from '@/components/Profile'
+
+//user_components
+
+import Register from '@/components/User_components/Register'
+import Login from '@/components/User_components/Login'
+import Dashboard from '@/components/User_components/Dashboard'
+
+//cow_conponents
+import Cows from '@/components/cows_components/Cows'
+import view_cow from '@/components/cows_components/view_cow'
+
 //
 
 
@@ -19,6 +29,12 @@ export default new Router({
       name: 'Home',
       component: Home
     },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: profile
+    },
+    //users routes
     {
       path: '/register',
       name: 'Register',
@@ -34,10 +50,16 @@ export default new Router({
       name: 'Dashboard',
       component: Dashboard
     },
+    // cows routes
     {
       path: '/view_cow',
       name: 'view_cow',
       component: view_cow
+    },
+    {
+      path: '/cows',
+      name: 'cows',
+      component: Cows
     }
   ],
   mode:'history',

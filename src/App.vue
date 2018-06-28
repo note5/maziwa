@@ -11,6 +11,7 @@
       <v-list dense class="grey lighten-4" >
         <template >
           <div>
+            <v-subheader><h3 class="subheader_color">System User</h3></v-subheader>
                <v-list-tile @click="navigateTo({'name':'/'})" >
                   <v-list-tile-action>
                       <v-icon>home</v-icon>
@@ -66,21 +67,97 @@
                   </v-list-tile-content>
               </v-list-tile>
         </div>
+          <!--- Other componets of adding farmer, cow, milk etc-->
 
-          <v-layout row align-center >
-          </v-layout>
-          <v-divider dark class="my-3"></v-divider>
-
-          <v-list-tile @click=""   >
-            <v-list-tile-action>
-              <v-icon>add</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title class="grey--text">
-                Create new label
-              </v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+          <v-divider dark class="my-3"></v-divider> 
+          <div>        
+            <v-subheader><h3 class="subheader_color">Farmer's Details</h3></v-subheader>
+           <v-list-tile @click="navigateTo({'name':'farmer'})" >
+                  <v-list-tile-action>
+                   <div><img :src="require('@/assets/farmer.svg')" height="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                        Farmer
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+           <v-divider dark class="my-3"></v-divider>
+           <v-subheader><h3 class="subheader_color">Cows' Profiles</h3></v-subheader> 
+            <v-list-tile @click="navigateTo({'name':'cows'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/cow1.svg')" height="30" width="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Cows 
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-divider dark class="my-3"></v-divider>
+            <v-subheader><h3 class="subheader_color">Cow details</h3></v-subheader>  
+            <v-list-tile @click="navigateTo({'name':'feeding'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/hay.svg')" height="30" width="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Feeding Records
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="navigateTo({'name':'milk'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/milk-can.svg')" height="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Milk Records
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="navigateTo({'name':'inseminations'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/AI.svg')" height="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Insemination Records
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="navigateTo({'name':'births'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/cow-calf.svg')" height="30" width="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Birth Records
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="navigateTo({'name':'treatments'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/needle.svg')" height="30"></div>
+                 
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Treatment Records
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="navigateTo({'name':'Vaccinations'})" >
+                  <v-list-tile-action>
+                 <div><img :src="require('@/assets/needle.svg')" height="30"></div>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                       Vaccinations
+                   </v-list-tile-title>
+                  </v-list-tile-content>
+            </v-list-tile>
+          </div>
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -124,37 +201,14 @@ export default {
   data(){
     return{
       drawer:true,
-      l:false,
-      items: [
-        { icon: 'perm_identity', text: 'USER' },
-        { icon: 'touch_app', text: 'Login' },
-        { divider: true },
-        { heading: 'Labels' },
-        { icon: 'add', text: 'Create new label' },
-        { divider: true },
-        { icon: 'archive', text: 'Archive' },
-        { icon: 'delete', text: 'Trash' },
-        { divider: true },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Trash' },
-        { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Keyboard shortcuts' }
-      ]
+      l:false
     }
   }
 }
 </script>
 
 <style>
-  #keep main .container {
-    height: 660px;
-  }
-  .navigation-drawer__border {
-    display: none;
-  }
-  .text {
-    font-weight: 400;
-  }
-
+ .subheader_color{
+   color:rgb(129, 199, 132) !important;
+ }
 </style>

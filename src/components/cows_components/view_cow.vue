@@ -1,7 +1,15 @@
 <template>
   <div>
-    <v-container>
   <v-layout row wrap>
+     <v-flex xs12 sm4 >
+       <v-card class="mr-2" height="100%">
+  
+       <v-card-title primary-title>
+         <h2>Top Performers </h2>
+       </v-card-title>
+             <p>Cow</p>
+     </v-card>
+   </v-flex>
    <v-flex xs12 sm8>
      <v-card class="mr-1">
         <!-- ---------Date picker  -------->
@@ -17,20 +25,17 @@
         lazy
         transition="scale-transition"
         offset-y
-        full-width
-    
-      >
+        full-width>
         <v-text-field
           slot="activator"
           v-model="date1"
-          label="select start date"
+          label="From"
           prepend-icon="event"
           readonly
         ></v-text-field>
         <v-date-picker v-model="date1" width="200" no-title scrollable>
-          <v-spacer></v-spacer>
           <v-btn flat color="primary" @click="menu1 = false">Cancel</v-btn>
-          <v-btn flat color="primary" @click="date_picked(date1)">OK</v-btn>
+          <v-btn flat color="primary" @click="date_picked('menu1',date1)">OK</v-btn>
         </v-date-picker>
       </v-menu>
        </v-flex>
@@ -50,7 +55,7 @@
         <v-text-field
           slot="activator"
           v-model="date2"
-          label="select end date"
+          label="To"
           prepend-icon="event"
           readonly
         ></v-text-field>
@@ -62,30 +67,26 @@
       </v-menu>
   </v-flex>
 </v-layout>
+<v-card-actions>
+  <v-btn block color="green">apply time range</v-btn>
+</v-card-actions>
 </v-card>
         <!--End date menu-->
-       <v-card-title primary-title>
-         <h2>Milk Chart for the Month</h2>
+       <v-card-title primary-title style="justify-content:center;">
+         <h2>Milk and feeds  Chart for chelel for the last 30 day</h2>
        </v-card-title>
              <canvas ref="chart"></canvas>
      </v-card>
    </v-flex>
-  
-     <v-flex xs12 sm4 >
-       <v-card class="ml-1" height="100%">
-  
-       <v-card-title primary-title>
-         <h2>Top Performers </h2>
-       </v-card-title>
-             <canvas ref="gg"></canvas>
-     </v-card>
-   </v-flex>
  </v-layout>
-</v-container>
-<v-container>
+
 <v-layout row wrap>
   <v-flex xs12 sm12>
-    <div class="tbs">
+    <v-card class="mt-2 mb-0">
+      <v-card-title style="justify-content:center;"><h2 >Milk produced by Chelel in the last 30 days</h2>
+      </v-card-title>
+      
+    <div>
   <v-card>
     <v-card-title>
       Nutrition
@@ -117,9 +118,10 @@
     </v-data-table>
   </v-card>
     </div>
+    </v-card>
   </v-flex>
 </v-layout>
-</v-container>
+
 </div>
 </template>
 
@@ -127,6 +129,11 @@
 export default {
     data () {
       return {
+    date1: null,
+    date2: null,
+    menu1: false,
+    menu2: false,
+    date: null,
         search: '',
         headers: [
           {
@@ -237,8 +244,6 @@ export default {
     },
     mounted() {
             var chart = this.$refs.chart;
-            var gg = this.$refs.gg;
-            var ggt = gg.getContext("2d")
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
                 type: 'line',
@@ -275,44 +280,17 @@ export default {
                         }]
                     }
                 }
-            });
-            var myChart = new Chart(ggt, {
-                type: 'line',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        }
+            });            
+        },
+methods: {
+    date_picked(x, date) {
+      console.log(x);
+      this.$refs[x].save(date);
+    },
+    navTo({ name: route }) {
+      this.$router.push(route);
+    }
+  }
   }
 </script>
 

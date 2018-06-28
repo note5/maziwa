@@ -1,17 +1,18 @@
 <template>
   <div>
-      <section>
-        <v-parallax :src="require('@/assets/cows1.jpg')"  class="cpow" height="400">
-          <v-layout
-            column
-            align-center
-            justify-center >
-            <img :src="require('@/assets/cpows2.jpg')" height="200">
-            <h1>Dairy Analytics</h1>
-            <div class="subheading mb-3 text-xs-center">Made by a farmer for farmers</div>
-          </v-layout>
-        </v-parallax>
-      </section>
+    <v-card flat> 
+        <v-card-title  primary-title style="justify-content:center;">
+          <v-card color="green">
+          <div>
+            <h3 class="headline mb-0"><strong>Farm:</strong>Kamuren Farm</h3>
+            <v-divider></v-divider>
+            <h3 class="headline mb-0"><strong>County :</strong>  Baringo county</h3>
+              <v-divider></v-divider>
+            <h3 class="headline mb-0"><strong>Location :</strong> Koibatek</h3>
+          </div>
+           </v-card>
+        </v-card-title>
+      </v-card>
 
       <section>
         <v-layout
