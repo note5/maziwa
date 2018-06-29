@@ -44,7 +44,7 @@
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-2 transparent" style="heigh:max-content%">
+                  <v-card class="elevation-0 transparent" style="heigh:max-content%">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">trending_up</v-icon>
                     </v-card-text>
@@ -59,7 +59,7 @@
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-2 transparent">
+                  <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
@@ -75,7 +75,7 @@
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-2 transparent">
+                  <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">build</v-icon>
                     </v-card-text>
@@ -101,7 +101,7 @@
         <v-parallax :src="require('@/assets/cows1.jpg')" height="380">
           <v-layout column align-center justify-center>
             <div style="background-color:black;">
-            <div style="text-align:center">Market your Farm</div>
+            <div style="text-align:center"><h2>Market your Farm</h2></div>
             <p>Create a public profile about your farm</p>
              <v-btn   color="green" to="login">login</v-btn>
              <v-btn color="green" to="register">create an account</v-btn>
