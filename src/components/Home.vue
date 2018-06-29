@@ -7,9 +7,20 @@
             align-center
             justify-center >
             <img :src="require('@/assets/cpows2.jpg')" height="200">
-            <h1 style="background:black;">Dairy Analytics</h1>
-            <div class="subheading mb-3 text-xs-center" 
-            style="background:black;">Made by a farmer for farmers</div>
+            <h1 style="background:black;"></h1>
+            <!-- <div class="subheading mb-3 text-xs-center" 
+            style="background:black;">Made by a farmer for farmers
+            <v-btn to="register">Rgister</v-btn>
+            or
+            <v-btn to="login">log in</v-btn>
+            </div> -->
+
+             <div style="background-color:black;">
+            <div class="mb-1 text-xs-center"><h2>Dairy Analytics</h2></div>
+            <p style="text-align:center">Made by a farmer for farmers</p>
+             <v-btn to="login">log in</v-btn>
+             <v-btn to="register">create an account</v-btn>
+            </div>
           </v-layout>
         </v-parallax>
       </section>
@@ -33,7 +44,7 @@
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent" style="heigh:max-content%">
+                  <v-card class="elevation-2 transparent" style="heigh:max-content%">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">trending_up</v-icon>
                     </v-card-text>
@@ -48,7 +59,7 @@
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
+                  <v-card class="elevation-2 transparent">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
@@ -64,7 +75,7 @@
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
+                  <v-card class="elevation-2 transparent">
                     <v-card-text class="text-xs-center">
                       <v-icon x-large class="green--text text--lighten-2">build</v-icon>
                     </v-card-text>
@@ -90,8 +101,10 @@
         <v-parallax :src="require('@/assets/cows1.jpg')" height="380">
           <v-layout column align-center justify-center>
             <div style="background-color:black;">
-            <div>Market your Farm</div>
+            <div style="text-align:center">Market your Farm</div>
             <p>Create a public profile about your farm</p>
+             <v-btn to="login">log in</v-btn>
+             <v-btn to="register">create an account</v-btn>
             </div>
           </v-layout>
         </v-parallax>
@@ -159,6 +172,11 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted(){
+    
+       console.log(this.$refs.nav)
+     
   }
 }
 </script>

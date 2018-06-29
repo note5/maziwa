@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-////routes to components
-
 //general components
+
 import Home from '@/components/Home'
 import profile from '@/components/Profile'
 

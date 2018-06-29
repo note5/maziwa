@@ -39,6 +39,7 @@
                   type="password"
                   required
                 ></v-text-field>
+                {{passmsg}}
                  </v-form>
                </v-card-text>
                <v-card-actions>
@@ -48,7 +49,7 @@
                   label="Do you agree with the terms and conditions?"
                   required>
                   </v-checkbox>
-              <v-btn  color="success">Register</v-btn>
+              <v-btn  color="success" @click="register">Register</v-btn>
             </v-card-actions>
       </v-card>
         </v-flex>
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import Authservice from '@/services/authService'
 export default {
  data: () => ({
       valid: false,
@@ -72,10 +74,35 @@ export default {
       password1:'',
       passwordrules:[
         p=> !!p || 'Enter a password',
-        p=> this.password1 !=p || 'Password did not match'
       ],
-       checkbox: false
-    })
+       checkbox: false,
+       passmsg:null
+    }),
+    // the register method
+  methods:{
+    async register(){
+      try{
+        if(this.password===this.password1){
+         const response = await Authservice.register({
+          name: this.name,
+          email:  this.email,
+          password:  this.password
+      })
+      this.passmsg=null 
+      console.log(response.data)
+      this.$store.dispatch('setToken', response.data.token)
+      }else{
+      this.passmsg = 'password did not match'
+      }
+      console.log(this.passmsg)
+      }catch(error){
+
+        this.err = error.response.data.error
+        console.log(this.err)
+      }
+     
+    }
+  }
 }
 </script>
 

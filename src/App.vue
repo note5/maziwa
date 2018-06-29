@@ -3,11 +3,11 @@
     <v-navigation-drawer
       v-model="drawer"
       fixed
-      clipped
+     
       class="grey lighten-4"
       width="250"
       app 
-      v-if="l==false">
+      v-if="$store.state.isLoggedIn">
       <v-list dense class="grey lighten-4" >
         <template >
           <div>
@@ -161,15 +161,15 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar flat color="green lighten-2" app  clipped-left v-if="l==false">
-      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar flat color="green" app  clipped-left v-if="!l">
+      <v-toolbar-side-icon v-if="$store.state.isLoggedIn" @click.native="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">Dairy Analytics</span>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
           <v-btn flat to="/">Home</v-btn>
           <v-btn flat to="/register">Register</v-btn>
           <v-btn flat to="/login">Login</v-btn>
-          <v-btn flat to="/dashboard">Dashboard</v-btn>
+          <v-btn v-if="$store.state.isLoggedIn" flat to="/dashboard">Dashboard</v-btn>
     </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -200,11 +200,19 @@ export default {
   },
   data(){
     return{
-      drawer:false,
-      l:false
+      drawer:false
+    }
+  },
+  computed: {
+    l () {
+      if(this.$route.path == '/register' ||this.$route.path=='/login'){
+         return false
+       }else{
+         return  true
+       }
     }
   }
-}
+ }
 </script>
 
 <style>
