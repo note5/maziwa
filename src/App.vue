@@ -56,7 +56,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-             <v-list-tile @click="logout" >
+             <v-list-tile @click="" @click="logout">
                   <v-list-tile-action>
                       <v-icon>power_settings_new</v-icon>
                   </v-list-tile-action>
@@ -167,8 +167,8 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
           <v-btn flat to="/">Home</v-btn>
-          <v-btn flat to="/register">Register</v-btn>
-          <v-btn flat to="/login">Login</v-btn>
+          <v-btn flat v-if="!$store.state.isLoggedIn" to="/register">Register</v-btn>
+          <v-btn flat v-if="!$store.state.isLoggedIn" to="/login">Login</v-btn>
           <v-btn v-if="$store.state.isLoggedIn" flat to="/dashboard">Dashboard</v-btn>
     </v-toolbar-items>
     </v-toolbar>
@@ -195,7 +195,9 @@ export default {
       //console.log('pressed',route)
     },
     logout(){
-     // console.log('logout')
+      this.$store.dispatch('setToken',null)
+      this.$store.dispatch('setUser',null)
+      this.$router.push('/')
     }
   },
   data(){
@@ -205,6 +207,9 @@ export default {
   },
   computed: {
     l () {
+      if(this.$store.state.isLoggedIn){
+        return false
+      }
       if(this.$route.path == '/register' ||this.$route.path=='/login'){
          return false
        }else{
@@ -212,7 +217,7 @@ export default {
        }
     }
   }
- }
+}
 </script>
 
 <style>

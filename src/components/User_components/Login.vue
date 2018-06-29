@@ -27,7 +27,7 @@
                 ></v-text-field>
                  </v-form>
               </v-card-text>
-            <v-btn block  color="success">Login</v-btn>
+            <v-btn block  color="success" @click="login">Login</v-btn>
       </v-card>
         </v-flex>
       </v-layout>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import Authservice from '@/services/authService'
 export default {
  data: () => ({
       valid: false,
@@ -52,7 +53,22 @@ export default {
         p=> !!p || 'Enter a password'
       ],
        checkbox: false
-    })
+    }),
+    methods:{
+      async login(){
+        try{
+          const response = await Authservice.login({
+          email:  this.email,
+          password:  this.password
+      })
+       console.log(response.data)
+       this.$store.dispatch('setToken', response.data.token)
+        }catch(err){
+          console.log(err.response.data.error)
+
+        }
+      }
+    }
 }
 </script>
 

@@ -18,8 +18,8 @@
              <div style="background-color:black;">
             <div class="mb-1 text-xs-center"><h2>Dairy Analytics</h2></div>
             <p style="text-align:center">Made by a farmer for farmers</p>
-             <v-btn to="login">log in</v-btn>
-             <v-btn to="register">create an account</v-btn>
+             <v-btn  color="green" to="login">login</v-btn>
+             <v-btn  color="green" to="register">create an account</v-btn>
             </div>
           </v-layout>
         </v-parallax>
@@ -103,8 +103,8 @@
             <div style="background-color:black;">
             <div style="text-align:center">Market your Farm</div>
             <p>Create a public profile about your farm</p>
-             <v-btn to="login">log in</v-btn>
-             <v-btn to="register">create an account</v-btn>
+             <v-btn   color="green" to="login">login</v-btn>
+             <v-btn color="green" to="register">create an account</v-btn>
             </div>
           </v-layout>
         </v-parallax>
@@ -168,16 +168,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
-  mounted(){
-    
-       console.log(this.$refs.nav)
-     
-  }
 }
 </script>
 
