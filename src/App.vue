@@ -23,7 +23,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile @click="navigateTo({'name':'Login'})" >
+              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo({'name':'Login'})" >
                   <v-list-tile-action>
                       <v-icon>fingerprint</v-icon>
                   </v-list-tile-action>
@@ -34,7 +34,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile @click="navigateTo({'name':'Register'})" >
+              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo({'name':'Register'})" >
                   <v-list-tile-action>
                       <v-icon>how_to_reg</v-icon>
                   </v-list-tile-action>

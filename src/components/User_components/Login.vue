@@ -63,6 +63,7 @@ export default {
       })
        console.log(response.data)
        this.$store.dispatch('setToken', response.data.token)
+       this.$router.push('dashboard')
         }catch(err){
           console.log(err.response.data.error)
 
