@@ -4,9 +4,10 @@
       v-model="drawer"
       fixed
      
-      class="grey lighten-4"
+      class="grey lighten-4 mt-5"
       width="250"
       app 
+
       v-if="$store.state.isLoggedIn">
       <v-list dense class="grey lighten-4" >
         <template >
@@ -198,6 +199,7 @@ export default {
       this.$store.dispatch('setToken',null)
       this.$store.dispatch('setUser',null)
       this.$router.push('/')
+      this.$localStorage.remove('token')
     }
   },
   data(){
@@ -217,6 +219,7 @@ export default {
        }
     }
   }
+
 }
 </script>
 

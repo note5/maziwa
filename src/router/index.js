@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store/store'
 
 //general components
 
@@ -20,6 +21,13 @@ import view_cow from '@/components/cows_components/view_cow'
 
 
 Vue.use(Router)
+function requireAuth (to, from, next) {
+  if ( store.state.token) {
+         next();
+    }else{
+      next('register');
+    }
+}
 
 export default new Router({
   routes: [
@@ -47,7 +55,8 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard
+      component: Dashboard,
+      beforeEnter: requireAuth
     },
     // cows routes
     {
@@ -62,5 +71,6 @@ export default new Router({
     }
   ],
   mode:'history',
-  shabang:false
+  hashbang:false
+  
 })

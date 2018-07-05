@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex)
 
+const vuexLocal = new VuexPersistence({
+    key: 'bart',
+    storage: window.localStorage
+})
+
 export default new Vuex.Store({
-   strict: true,
+    
    state:{
        token: null, //can not modify a mutation
        user:null,
@@ -15,6 +20,7 @@ export default new Vuex.Store({
            state.token = token
            if(token){
                state.isLoggedIn=true
+    
            }else{
                state.isLoggedIn=false
            }
@@ -30,6 +36,7 @@ export default new Vuex.Store({
        setUser ({commit}, user){
            commit('setUser',user)
        }
-   }
+   },
+   plugins: [vuexLocal.plugin]
 
 })

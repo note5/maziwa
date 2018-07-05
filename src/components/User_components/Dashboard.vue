@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-card class="mb-2">
-        <h4 @click="navTo({'name':'view_cow'})" class="text-xs-center display-2" style="color:green;">Quick Summary</h4>
+        <h4  class="text-xs-center display-2" style="color:green;">Quick Summary</h4>
     <v-card-text>
     <v-layout row wrap >        
         <v-flex>

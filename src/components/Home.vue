@@ -15,7 +15,7 @@
             <v-btn to="login">log in</v-btn>
             </div> -->
 
-             <div style="background-color:black;">
+             <div v-if="!$store.state.isLoggedIn" style="background-color:black;">
             <div class="mb-1 text-xs-center"><h2>Dairy Analytics</h2></div>
             <p style="text-align:center">Made by a farmer for farmers</p>
              <v-btn  color="green" to="login">login</v-btn>
@@ -99,7 +99,7 @@
 
       <section>
         <v-parallax :src="require('@/assets/cows1.jpg')" height="380">
-          <v-layout column align-center justify-center>
+          <v-layout v-if="!$store.state.isLoggedIn" column align-center justify-center>
             <div style="background-color:black;">
             <div style="text-align:center"><h2>Market your Farm</h2></div>
             <p>Create a public profile about your farm</p>
