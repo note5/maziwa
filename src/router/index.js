@@ -13,6 +13,9 @@ import Register from '@/components/User_components/Register'
 import Login from '@/components/User_components/Login'
 import Dashboard from '@/components/User_components/Dashboard'
 
+//farmer_components
+import Farmer from '@/components/Farmer_components/Farmer'
+
 //cow_conponents
 import Cows from '@/components/cows_components/Cows'
 import view_cow from '@/components/cows_components/view_cow'
@@ -58,6 +61,14 @@ export default new Router({
       component: Dashboard,
       beforeEnter: requireAuth
     },
+    // farmer routes
+    {
+      path: '/farmer',
+      name: 'Farmer',
+      component: Farmer,
+      beforeEnter: requireAuth
+    },
+    // fa
     // cows routes
     {
       path: '/view_cow',

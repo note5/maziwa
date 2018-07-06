@@ -5,7 +5,7 @@
       <v-btn slot="activator" color="success" dark>ADD a cow</v-btn>
       <v-card>
         <v-card-title class="justify-center" >
-          <span  class="headline" >Cow Details</span>
+          <span  class="headline">Cow Details</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
@@ -29,7 +29,7 @@
                 </v-select>
               </v-flex>  
               <v-flex xs12>
-                <input  type="file" @change="onFileChanged">
+                <input  type="file" @change="onFileChanged"  @keyup.enter="onUpload">
                   <v-btn color="success" @click="onUpload">Upload!</v-btn>
                    
                   <div class="image-preview" v-if="imageData.length > 0">
@@ -38,7 +38,9 @@
             </div>
               </v-flex>
             </v-layout>
+            <small>*indicates required field</small>
           </v-container>
+           
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -221,9 +223,12 @@ export default {
     onFileChanged(event) {
       const file = event.target.files[0];
       this.selectedFile = file;
+      if(file){
       this.imageData = URL.createObjectURL(file);
+      }
     },
-    onUpload() {
+    onUpload() { //debugging purposes
+      console.log('file', this.selectedFile)
       console.log(this.selectedFile);
     }
   }
@@ -235,6 +240,6 @@ img.preview {
     max-height:200px;
     background-color: grey;
     border: 1px solid #DDD;
-    padding: 5px;
+    padding: 3px;
 }
 </style>
