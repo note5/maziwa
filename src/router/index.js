@@ -4,8 +4,8 @@ import store from '@/store/store'
 
 //general components
 
-import Home from '@/components/Home'
-import profile from '@/components/Profile'
+import Home from '@/components/General_components/Home'
+import profile from '@/components/General_components/Profile'
 
 //user_components
 
@@ -17,8 +17,8 @@ import Dashboard from '@/components/User_components/Dashboard'
 import Farmer from '@/components/Farmer_components/Farmer'
 
 //cow_conponents
-import Cows from '@/components/cows_components/Cows'
-import view_cow from '@/components/cows_components/view_cow'
+import Cows from '@/components/Cows_components/Cows'
+import view_cow from '@/components/Cows_components/view_cow'
 
 //
 
