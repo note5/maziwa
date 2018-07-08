@@ -20,7 +20,8 @@ import Farmer from '@/components/Farmer_components/Farmer'
 import Cows from '@/components/Cows_components/Cows'
 import view_cow from '@/components/Cows_components/view_cow'
 
-//
+// vaccinations
+import Vaccinations from '@/components/Vaccination_components/Vaccinations'
 
 
 Vue.use(Router)
@@ -68,7 +69,7 @@ export default new Router({
       component: Farmer,
       beforeEnter: requireAuth
     },
-    // fa
+    
     // cows routes
     {
       path: '/view_cow',
@@ -79,6 +80,11 @@ export default new Router({
       path: '/cows',
       name: 'cows',
       component: Cows
+    },
+    {
+      path: '/vaccinations',
+      name: 'Vaccinations',
+      component: Vaccinations
     }
   ],
   mode:'history',

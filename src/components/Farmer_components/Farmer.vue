@@ -97,7 +97,7 @@
     </v-layout>
     <!--end of edit modal-->
     <v-layout row wrap>
-      <v-flex xs12 md6 offset-md3>
+      <v-flex xs12 md8 offset-md2>
       <v-card class="mt-3">
          <v-container>
            <v-list-tile-content>
@@ -218,5 +218,11 @@ export default {
 <style scoped>
 p{
   color:green;
+}
+h2{
+  color:blue;
+}
+strong{
+  color: blue;
 }
 </style>

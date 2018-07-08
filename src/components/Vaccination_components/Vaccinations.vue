@@ -3,10 +3,10 @@
     <!--add cow modal-->
     <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="700">
-      <v-btn slot="activator" color="success" dark>ADD a cow</v-btn>
+      <v-btn slot="activator" color="success" dark>ADD vaccination</v-btn>
       <v-card>
         <v-card-title class="justify-center" >
-          <span  class="headline"><strong> Cow Details</strong></span>
+          <span  class="headline"><strong> vaccination</strong></span>
           <v-spacer></v-spacer>
          <v-btn flat color="red" @click.native="dialog = false"> <v-icon >highlight_off</v-icon></v-btn>
         </v-card-title>
@@ -131,7 +131,7 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
-        <td @click="show_cow(props.item)">{{ props.item.name }}</td>
+        <td>{{ props.item.name }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
         <td >{{ props.item.picture }}</td>
@@ -164,22 +164,22 @@ export default {
     return {
       cow_name: "",
       imageData: "",
-      breed: null,
-      year_born: null,
-      weight: null,
+      breed:null,
+      year_born:null,
+      weight:null,
       //edit modal values
       cow_name_edit: "",
       imageData_edit: "",
-      breed_edit: null,
-      year_born_edit: null,
-      weight_edit: null,
-
+      breed_edit:null,
+      year_born_edit:null,
+      weight_edit:null,
+      
       selectedFile: null,
       dialog: false,
       dialog_edit: false,
       items: ["pregnant", "sold", "dead", "slaughtered", "dry", "milked"],
       value: [],
-      value_edit: [],
+      value_edit:[],
       search: "",
       headers: [
         {
@@ -188,18 +188,14 @@ export default {
           value: "name"
         },
         { text: "Weight (Kgs)", value: "weight" },
-        { text: "Breed", value: "breed" },
-        {
-          text: "Picture",
-          value: "picture",
-          sortable: false
+        { text: "Breed", value: "breed", },
+        { text: "Picture", value: "picture" ,sortable: false,
+        
         },
-        { text: "Edit", value: "edit", sortable: false },
-        {
-          text: "Delete",
-          value: "delete",
-          sortable: false
-        }
+        {text:"Edit",value:"edit",sortable: false,},
+        { text: "Delete", value: "delete",
+        sortable: false,
+         }
       ],
       cows: [
         {
@@ -207,8 +203,7 @@ export default {
           name: "chelel",
           weight: 408,
           breed: "freshian",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
+          picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
           date: "1/1/2009",
           delete: "Delete"
         },
@@ -227,9 +222,8 @@ export default {
           name: "mardadi",
           weight: 287,
           breed: "jersey",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          state: ["pregnant", "dry"],
+          picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
+          state:["pregnant","dry"],
           date: "1/1/2009",
 
           delete: "Delete"
@@ -242,24 +236,18 @@ export default {
       this.$router.push(route);
     },
     print() {
-      console.log("edit");
+       console.log("edit");
     },
-    show(x) {
-      this.dialog_edit = true;
-      this.cow_name_edit = x.name;
-      this.breed_edit = x.breed;
-      this.year_born_edit = x.date;
-      this.weight_edit = x.weight;
-      if (x.state) {
-        this.value_edit = x.state;
+    show(x){
+      this.dialog_edit=true
+      this.cow_name_edit=x.name
+      this.breed_edit=x.breed
+      this.year_born_edit=x.date
+      this.weight_edit=x.weight
+      if(x.state){
+      this.value_edit=x.state
       }
-      this.imageData_edit = x.picture;
-    },
-    show_cow(cow) {
-      this.$router.push({
-        name: "view_cow",
-        params: { cow: cow }
-      });
+      this.imageData_edit=x.picture
     },
     onFileChanged(event) {
       const file = event.target.files[0];
@@ -273,7 +261,8 @@ export default {
       console.log("file", this.selectedFile);
       console.log(this.selectedFile);
     }
-  }
+  }      
+
 };
 </script>
 <style scoped>
@@ -284,7 +273,7 @@ img.preview {
   border: 1px solid #ddd;
   padding: 3px;
 }
-h3 {
+h3{
   color: blue;
 }
 </style>

@@ -1,16 +1,20 @@
 <template>
   <div>
   <v-layout row wrap>
-     <v-flex xs12 sm4 >
+     <v-flex xs12 sm4 md4>
        <v-card class="mr-2" height="100%">
   
        <v-card-title primary-title>
          <h2>Top Performers </h2>
        </v-card-title>
-             <p>Cow</p>
+       <v-card-text>
+             <p>{{name}}</p>
+
+            <img class="preview mt-2" :src="imageData">
+       </v-card-text>
      </v-card>
    </v-flex>
-   <v-flex xs12 sm8>
+   <v-flex xs12 sm8 md8>
      <v-card class="mr-1">
         <!-- ---------Date picker  -------->
     <v-card flat>
@@ -135,6 +139,9 @@ export default {
     menu2: false,
     date: null,
         search: '',
+        name:this.$route.params.cow.name,
+        imageData:this.$route.params.cow.picture,
+
         headers: [
           {
             text: 'Dessert (100g serving)',
@@ -243,6 +250,7 @@ export default {
       }
     },
     mounted() {
+            console.log(this.$route.params.cow)
             var chart = this.$refs.chart;
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
