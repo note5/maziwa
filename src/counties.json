@@ -41,7 +41,7 @@
     ]
  },
  {
-    "﻿﻿﻿﻿﻿﻿﻿﻿﻿Code":"003",
+    "value":"003",
     "text":"Kilifi",
     "Subcounties":[
     {
@@ -65,7 +65,7 @@
     ]
  },
  {
-    "﻿﻿﻿﻿﻿﻿﻿﻿﻿Code":"004",
+    "value":"004",
     "text":"Tana River",
     "Subcounties":[
     {
