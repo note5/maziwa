@@ -109,7 +109,7 @@
     </v-card-title>
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="cow_data"
       :search="search"
     >
       <template slot="items" slot-scope="props">
@@ -151,18 +151,14 @@ export default {
 
         headers: [
           {
-            text: 'Dessert (100g serving)',
-            align: 'left',
+            text: 'Milk',align: 'left',
             sortable: false,
-            value: 'name'
+            value: 'milk'
           },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' }
+          { text: 'Feeding', value: 'food' },
+          { text: 'Date', value: 'date' }
         ],
-        desserts: [
+        cow_data: [
           
           {
             value: false,
