@@ -131,7 +131,7 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
-        <td @click="show_cow(props.item)">{{ props.item.name }}</td>
+        <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.name }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
         <td >{{ props.item.picture }}</td>

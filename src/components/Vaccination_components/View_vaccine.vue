@@ -1,24 +1,6 @@
 <template>
-  <div>
-  <v-layout row wrap>
-     <v-flex xs12 sm4 md4>
-       <v-card class="mr-2" height="100%">
-        <v-card-title>
-          <h2 class="mt-2 mb-2" style="text-decoration:underline; ">Cow Profile</h2>
-        </v-card-title>
-         <v-card-text>
-         <h3>Name: <span style="color:black;text-transform: capitalize;">{{name}}</span> </h3>
-         <h3>Breed: <span style="color:black;text-transform: capitalize;">{{breed}}</span> </h3>
-         <h3>weight: <span style="color:black;text-transform: capitalize;">{{weight}}</span> </h3>
-         <h3>Year of birth: <span style="color:black;text-transform: capitalize;">{{year}}</span> </h3>
-         </v-card-text>
-       <v-card-text>
-         <img class="preview mt-2" :src="imageData">
-       </v-card-text>
-     </v-card>
-   </v-flex>
-   <v-flex xs12 sm8 md8>
-     <v-card class="mr-1">
+  <v-layout row justify-center wrap >
+    <v-card class="mr-1">
         <!-- ---------Date picker  -------->
       <v-layout row wrap>
         <v-card-title primary-title class="title-md-center">
@@ -85,52 +67,7 @@
 </v-card-actions>
    <canvas ref="chart"></canvas>
 </v-card>
-   </v-flex>
  </v-layout>
-
-<v-layout row wrap>
-  <v-flex xs12 sm12>
-    <v-card class="mt-2 mb-0">
-      <v-card-title style="justify-content:center;"><h2 >Milk produced by Chelel in the last 30 days</h2>
-      </v-card-title>
-      
-    <div>
-  <v-card>
-    <v-card-title>
-      Nutrition
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :search="search"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
-      </template>
-      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Your search for "{{ search }}" found no results.
-      </v-alert>
-    </v-data-table>
-  </v-card>
-    </div>
-    </v-card>
-  </v-flex>
-</v-layout>
-
-</div>
 </template>
 
 <script>
@@ -142,60 +79,10 @@ export default {
     menu1: false,
     menu2: false,
     date: null,
-        search: '',
-        name:this.$route.params.cow.name,
-        breed: this.$route.params.cow.breed,
-        weight: this.$route.params.cow.weight,
-        year: this.$route.params.cow.date,
-        imageData:this.$route.params.cow.picture,
-
-        headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' }
-        ],
-        desserts: [
-          
-          {
-            value: false,
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%'
-          },
-          {
-            value: false,
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%'
-          },
-          {
-            value: false,
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%'
-          }
-        ]
       }
     },
     mounted() {
-            console.log(this.$route.params.cow)
+        console.log(this.$route.params)
             var chart = this.$refs.chart;
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
@@ -239,9 +126,6 @@ methods: {
     date_picked(x, date) {
       console.log(x);
       this.$refs[x].save(date);
-    },
-    navTo({ name: route }) {
-      this.$router.push(route);
     }
   }
   }
@@ -250,8 +134,8 @@ methods: {
 
 <style scoped>
 img.preview {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 280px;
+  max-height: 200px;
   background-color: grey;
   border: 1px solid #ddd;
 }

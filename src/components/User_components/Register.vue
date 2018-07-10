@@ -91,6 +91,7 @@ export default {
       this.passmsg=null 
       console.log(response.data)
       this.$store.dispatch('setToken', response.data.token)
+      this.$router.push({name:"Dashboard"})
       }else{
       this.passmsg = 'password did not match'
       }
