@@ -91,13 +91,12 @@
 <v-layout row wrap>
   <v-flex xs12 sm12>
     <v-card class="mt-2 mb-0">
-      <v-card-title style="justify-content:center;"><h2 >Milk produced by Chelel in the last 30 days</h2>
+      <v-card-title style="justify-content:center;"><h2 >Milk produced by {{name}} in the last 30 days</h2>
       </v-card-title>
-      
     <div>
   <v-card>
     <v-card-title>
-      Nutrition
+      {{name}} milk data
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -113,12 +112,8 @@
       :search="search"
     >
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
+        <td>{{ props.item.milk }}</td>
+        <td>{{ props.item.date }}</td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Your search for "{{ search }}" found no results.
@@ -151,41 +146,18 @@ export default {
 
         headers: [
           {
-            text: 'Milk',align: 'left',
-            sortable: false,
-            value: 'milk'
-          },
-          { text: 'Feeding', value: 'food' },
+            text: 'Milk', value: 'milk'},
           { text: 'Date', value: 'date' }
         ],
         cow_data: [
-          
           {
-            value: false,
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%'
+            milk: 30,
+            date: '2018-06-09'
+           
           },
           {
-            value: false,
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%'
-          },
-          {
-            value: false,
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%'
+            milk: 40,
+            date: '2018-05-19'
           }
         ]
       }
