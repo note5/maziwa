@@ -22,7 +22,11 @@ import view_cow from '@/components/Cows_components/view_cow'
 
 // vaccinations
 import Vaccinations from '@/components/Vaccination_components/Vaccinations'
+<<<<<<< HEAD
 
+=======
+import View_vaccine from '@/components/Vaccination_components/View_vaccine'
+>>>>>>> ae59f1c8d7e9e29a17a8e5ece6c6680e4d38de93
 
 Vue.use(Router)
 function requireAuth (to, from, next) {
@@ -81,13 +85,29 @@ export default new Router({
       name: 'cows',
       component: Cows
     },
+<<<<<<< HEAD
+=======
+    //vaccination routes
+>>>>>>> ae59f1c8d7e9e29a17a8e5ece6c6680e4d38de93
     {
       path: '/vaccinations',
       name: 'Vaccinations',
       component: Vaccinations
+<<<<<<< HEAD
     }
   ],
   mode:'history',
   hashbang:false
+=======
+    },
+    {
+      path: '/vaccine',
+      name: 'view_vaccine',
+      component: View_vaccine
+    }
+  ],
+  // mode:'history',
+   hashbang:false
+>>>>>>> ae59f1c8d7e9e29a17a8e5ece6c6680e4d38de93
   
 })
