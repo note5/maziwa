@@ -24,23 +24,23 @@
               <v-flex xs12 >
                 <h3>Year the cow was born: </h3>
                 <v-text-field v-model="year_born"  hint="Add the year the cow was born"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>Weight of Cow: </h3>
                 <v-text-field  v-model="weight" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
                 <v-select auto v-model="value"  tags ref="value" :items="items" attach chips label="Current state of the cow"
                     required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
                 </v-select>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <h3>Picture of the  Cow: </h3>
                 <input  type="file" @change="onFileChanged" >
                   <v-btn color="success" @click="onUpload">Upload!</v-btn>
-                   
+
                   <div class="image-preview" v-if="imageData.length > 0">
                    <div><h2>Name: {{cow_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData">
@@ -48,7 +48,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -82,22 +82,22 @@
               <v-flex xs12 >
                 <h3>Year the Cow was born: </h3>
                 <v-text-field  v-model="year_born_edit" required hint="Add the year the cow was born"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>Weight of the Cow: </h3>
                 <v-text-field  v-model="weight_edit" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
-                <v-select auto v-model="value_edit"  tags ref="value_edit" :items="items" attach chips 
+                <v-select auto v-model="value_edit"  tags ref="value_edit" :items="items" attach chips
                     required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
                 </v-select>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <input  type="file" @change="onFileChanged" >
                   <v-btn color="success" @click="onUpload">Upload!</v-btn>
-                   
+
                   <div class="image-preview" v-if="imageData_edit.length > 0">
                    <div><h2>Name: {{cow_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData_edit">
@@ -105,7 +105,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -121,7 +121,7 @@
     <v-card class="mt-2 mb-0">
       <v-card-title style="justify-content:center;"><h2 @click="navTo({name:'view_cow'})">Your Cows</h2>
       </v-card-title>
-      
+
     <div>
   <v-card>
     <v-card-title>
@@ -131,11 +131,7 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
-<<<<<<< HEAD
-        <td @click="show_cow(props.item)">{{ props.item.name }}</td>
-=======
         <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.name }}</td>
->>>>>>> ae59f1c8d7e9e29a17a8e5ece6c6680e4d38de93
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
         <td >{{ props.item.picture }}</td>
