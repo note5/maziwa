@@ -31,10 +31,10 @@
               </v-flex>  
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
-                <v-select auto v-model="value"  tags ref="value" :items="items" attach chips label="Current state of the cow"
+                <v-combobox  v-model="value"  ref="value" :items="items" chips label="Current state of the cow"
                     required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
-                </v-select>
+                </v-combobox>
               </v-flex>  
               <v-flex xs12>
                 <h3>Picture of the  Cow: </h3>
@@ -89,10 +89,9 @@
               </v-flex>  
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
-                <v-select auto v-model="value_edit"  tags ref="value_edit" :items="items" attach chips 
-                    required hint="what is the current state of the cow?"  persistent-hint
+                <v-combobox v-model="value_edit"  ref="value_edit" :items="items" chips label  required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
-                </v-select>
+                </v-combobox>
               </v-flex>  
               <v-flex xs12>
                 <input  type="file" @change="onFileChanged" >
@@ -273,7 +272,8 @@ export default {
       console.log("file", this.selectedFile);
       console.log(this.selectedFile);
     }
-  }
+  },
+  
 };
 </script>
 <style scoped>

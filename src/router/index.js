@@ -24,6 +24,10 @@ import view_cow from '@/components/Cows_components/view_cow'
 import Vaccinations from '@/components/Vaccination_components/Vaccinations'
 import View_vaccine from '@/components/Vaccination_components/View_vaccine'
 
+//feeding records
+import Feeding from '@/components/Feeding_components/Feeding'
+import View_cow_feed from '@/components/Feeding_components/View_cow_feed'
+
 Vue.use(Router)
 function requireAuth (to, from, next) {
   if ( store.state.token) {
@@ -91,7 +95,20 @@ export default new Router({
       path: '/vaccine',
       name: 'view_vaccine',
       component: View_vaccine
-    }
+    },
+    //feeding records
+    {
+      path: '/feeding',
+      name: 'Feeding',
+      component: Feeding
+    },
+    {
+      path: '/view_cow_feed',
+      name: 'View_cow_feed',
+      component: View_cow_feed
+    },
+
+
   ],
   // mode:'history',
    hashbang:false

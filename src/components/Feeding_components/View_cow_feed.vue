@@ -1,28 +1,10 @@
 <template>
-  <div>
-  <v-layout row wrap>
-     <v-flex xs12 sm4 md4>
-       <v-card class="mr-2" height="100%">
-        <v-card-title>
-          <h2 class="mt-2 mb-2" style="text-decoration:underline; ">Cow Profile</h2>
-        </v-card-title>
-         <v-card-text>
-         <h3>Name: <span style="color:black;text-transform: capitalize;">{{name}}</span> </h3>
-         <h3>Breed: <span style="color:black;text-transform: capitalize;">{{breed}}</span> </h3>
-         <h3>weight: <span style="color:black;text-transform: capitalize;">{{weight}}</span> </h3>
-         <h3>Year of birth: <span style="color:black;text-transform: capitalize;">{{year}}</span> </h3>
-         </v-card-text>
-       <v-card-text>
-         <img class="preview mt-2" :src="imageData">
-       </v-card-text>
-     </v-card>
-   </v-flex>
-   <v-flex xs12 sm8 md8>
-     <v-card class="mr-1">
+  <v-layout row justify-center wrap >
+    <v-card class="mr-1">
         <!-- ---------Date picker  -------->
       <v-layout row wrap>
-        <v-card-title primary-title >
-            <h2 class="headline">Number of of cows vaccinated over time by ccccccc</h2>
+        <v-card-title primary-title class="title-md-center">
+            <h2 style="text-align:center">Number of of cows vaccinated over time by ccccccc</h2>
          <!-- <h2>Milk and feeds  Chart for chelel for the last 30 day</h2> -->
        </v-card-title>
        <v-flex xs12 sm6>
@@ -85,47 +67,7 @@
 </v-card-actions>
    <canvas ref="chart"></canvas>
 </v-card>
-   </v-flex>
  </v-layout>
-
-<v-layout row wrap>
-  <v-flex xs12 sm12>
-    <v-card class="mt-2 mb-0">
-      <v-card-title style="justify-content:center;"><h2 >Milk produced by {{name}} in the last 30 days</h2>
-      </v-card-title>
-    <div>
-  <v-card>
-    <v-card-title>
-      {{name}} milk data
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="cow_data"
-      :search="search"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.milk }}</td>
-        <td>{{ props.item.date }}</td>
-      </template>
-      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Your search for "{{ search }}" found no results.
-      </v-alert>
-    </v-data-table>
-  </v-card>
-    </div>
-    </v-card>
-  </v-flex>
-</v-layout>
-
-</div>
 </template>
 
 <script>
@@ -137,33 +79,10 @@ export default {
     menu1: false,
     menu2: false,
     date: null,
-        search: '',
-        name:this.$route.params.cow.name,
-        breed: this.$route.params.cow.breed,
-        weight: this.$route.params.cow.weight,
-        year: this.$route.params.cow.date,
-        imageData:this.$route.params.cow.picture,
-
-        headers: [
-          {
-            text: 'Milk', value: 'milk'},
-          { text: 'Date', value: 'date' }
-        ],
-        cow_data: [
-          {
-            milk: 30,
-            date: '2018-06-09'
-           
-          },
-          {
-            milk: 40,
-            date: '2018-05-19'
-          }
-        ]
       }
     },
     mounted() {
-            console.log(this.$route.params.cow)
+        console.log(this.$route.params)
             var chart = this.$refs.chart;
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {
@@ -207,7 +126,7 @@ methods: {
     date_picked(x, date) {
       console.log(x);
       this.$refs[x].save(date);
-    },
+    }
   }
   }
 </script>
@@ -215,8 +134,8 @@ methods: {
 
 <style scoped>
 img.preview {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 280px;
+  max-height: 200px;
   background-color: grey;
   border: 1px solid #ddd;
 }
