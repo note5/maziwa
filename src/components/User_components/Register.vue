@@ -78,6 +78,13 @@ export default {
        checkbox: false,
        passmsg:null
     }),
+     created(){ // add key binding events for pressing enter to submit the data
+     window.addEventListener('keydown', (e) => {
+      if (e.key == 'Enter') {
+        this.register();
+      }
+    })
+    },
     // the register method
   methods:{
     async register(){

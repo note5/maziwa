@@ -107,7 +107,7 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'milk'})" >
+            <v-list-tile @click="navigateTo({'name':'Milk_records'})" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/milk-can.svg')" height="30"></div>
                   </v-list-tile-action>

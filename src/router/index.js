@@ -27,6 +27,8 @@ import View_vaccine from '@/components/Vaccination_components/View_vaccine'
 //feeding records
 import Feeding from '@/components/Feeding_components/Feeding'
 import View_cow_feed from '@/components/Feeding_components/View_cow_feed'
+//milk records
+import Milk_records from '@/components/Milk_components/Milk_records'
 
 Vue.use(Router)
 function requireAuth (to, from, next) {
@@ -107,6 +109,12 @@ export default new Router({
       name: 'View_cow_feed',
       component: View_cow_feed
     },
+    //milk records
+    {
+      path:'/milk_records',
+      name:'Milk_records',
+      component:Milk_records
+    }
 
 
   ],
