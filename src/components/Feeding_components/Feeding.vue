@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--add cow modal-->
+    <!--add feeding modal-->
     <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="700">
       <v-btn slot="activator" color="success" dark>ADD Feeding record</v-btn>
@@ -75,8 +75,8 @@
       </v-card>
     </v-dialog>
   </v-layout>
-  <!--end of add cow modal-->
-  <!--start of edit cow modal-->
+  <!--end of add feeding modal-->
+  <!--start of edit feeding modal-->
   <v-layout row justify-center>
     <v-dialog v-model="dialog_edit" persistent max-width="700">
       <v-card>
@@ -90,7 +90,7 @@
             <v-layout wrap>
       
                 <v-flex xs12>
-                <h3>Name of the cow: </h3><v-checkbox   :label="` All the cows`"    v-model="checkbox"></v-checkbox>
+                <h3>Name of the cow: </h3>
                 <v-combobox  v-model="cow_name_edit"  ref="cow_name_edit" :items="items" chips label="Name  of the cow"
                     required hint="which cows are your feeding? select the check box to select all"  persistent-hint
                     multiple >
@@ -153,7 +153,7 @@
       </v-card>
     </v-dialog>
   </v-layout>
-  <!-- end of edit cow modal-->
+  <!-- end of edit feeding modal-->
    <v-layout row wrap>
   <v-flex xs12 sm12>
     <v-card class="mt-2 mb-0">     

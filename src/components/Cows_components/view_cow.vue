@@ -22,7 +22,7 @@
         <!-- ---------Date picker  -------->
       <v-layout row wrap>
         <v-card-title primary-title >
-            <h2 class="headline">Number of of cows vaccinated over time by ccccccc</h2>
+            <h2 class="headline">Milk and Feed comparison of {{name}}</h2>
          <!-- <h2>Milk and feeds  Chart for chelel for the last 30 day</h2> -->
        </v-card-title>
        <v-flex xs12 sm6>
@@ -163,45 +163,59 @@ export default {
       }
     },
     mounted() {
-            console.log(this.$route.params.cow)
+            console.log(this.$store.state.cows[0])
             var chart = this.$refs.chart;
-            var ctx = chart.getContext("2d");
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });            
+    var ctx = chart.getContext("2d");
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],   
+          datasets: [
+          {
+           label: "Feeds",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            backgroundColor: [
+              
+             'rgba(54,73,93,.5)', // Blue
+              'rgba(54,73,93,.5)',
+          'rgba(255,0,0,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)'
+            ],
+            borderColor: [
+               '#5600ff',
+            ],
+            borderWidth: 1
+          },
+          {
+           label: "Milk",
+            data: [28, 48, 40, 19, 86, 27, 90],
+          backgroundColor: [
+            'rgba(71, 183,132,.5)', 
+            ],
+            borderColor: [
+            '#47b784',
+            ],
+            borderWidth: 1
+          }
+
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });      
         },
 methods: {
     date_picked(x, date) {

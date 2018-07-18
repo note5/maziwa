@@ -217,10 +217,11 @@ export default {
       console.log(date);
       this.$refs[x].save(date);
     },
-    show_cow(food) {
+    show_cow(milk) {
+      console.log(milk)
       this.$router.push({
-        name: "View_cow_feed",
-        params: { food: food }
+        name: "view_milk",
+        params: { milk: milk }
       });
     },
     destroy(x) {

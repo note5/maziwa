@@ -4,7 +4,7 @@
         <!-- ---------Date picker  -------->
       <v-layout row wrap>
         <v-card-title primary-title class="title-md-center">
-            <h2 style="text-align:center">Feeds consumed by {{name}}</h2>
+            <h2 style="text-align:center">Milk Production by {{name}}</h2>
          <!-- <h2>Milk and feeds  Chart for chelel for the last 30 day</h2> -->
        </v-card-title>
        <v-flex xs12 sm6>
@@ -79,12 +79,12 @@ export default {
     menu1: false,
     menu2: false,
     date: null,
-    name:''
+    name:""
       }
     },
     mounted() {
-        console.log(this.$route.params)
-        this.name= this.$route.params.food.cow[0]
+        console.log(this.$route.params.milk.cow)
+         this.name = this.$route.params.milk.cow[0]
             var chart = this.$refs.chart;
             var ctx = chart.getContext("2d");
             var myChart = new Chart(ctx, {

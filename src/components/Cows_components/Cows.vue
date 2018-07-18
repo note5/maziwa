@@ -159,6 +159,11 @@ export default {
       }, 50);
     }
   },
+  computed: {
+    cows () {
+      return this.$store.state.cows
+    }
+  },
   data() {
     return {
       cow_name: "",
@@ -199,41 +204,7 @@ export default {
           value: "delete",
           sortable: false
         }
-      ],
-      cows: [
-        {
-          value: false,
-          name: "chelel",
-          weight: 408,
-          breed: "freshian",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          date: "1/1/2009",
-          delete: "Delete"
-        },
-        {
-          value: false,
-          name: "baringo",
-          weight: 345,
-          breed: "ashyre",
-          picture: "http/hshshhs/hdhdd",
-          date: "1/1/2009",
-
-          delete: "Delete"
-        },
-        {
-          value: false,
-          name: "mardadi",
-          weight: 287,
-          breed: "jersey",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          state: ["pregnant", "dry"],
-          date: "1/1/2009",
-
-          delete: "Delete"
-        }
-      ]
+      ]      
     };
   },
   methods: {
@@ -257,6 +228,7 @@ export default {
     show_cow(cow) {
       this.$router.push({
         name: "view_cow",
+
         params: { cow: cow }
       });
     },
