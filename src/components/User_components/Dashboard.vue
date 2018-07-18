@@ -3,87 +3,33 @@
     <v-card class="mb-2">
         <h4  class="text-xs-center display-2" style="color:green;">Quick Summary</h4>
     <v-card-text>
-    <v-layout row wrap >        
+    <v-layout row wrap justify-center align-center >
         <v-flex>
-            <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer">
-                        <span class="display-1">50</span><br>
-                        <small>Cows</small>                   
-                    </v-card-text>
-                </v-card>                
-            </div>
+          <statcard  value="50" unitf="cows" comment="in total">
+          </statcard>
         </v-flex>
         <v-flex>
             <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer">
-                        <span class="display-1">120</span><small>
-                        ltrs of Milk</small><br>
-                         <small>Last 24 hours</small>
-                    </v-card-text>
-                </v-card>                
+              <statcard  value="120" unitf="ltrs of milk" comment="last 24 hrs">
+              </statcard>
             </div>
         </v-flex>
         <v-flex>
-            <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer">
-                        <span class="display-1">5 Pregnant</span>
-                        <br>
-                        <small>Last 12 months</small>
-                    </v-card-text>
-                </v-card>                
-            </div>
+          <statcard  value="5" unitf="Pregnant" comment="last 12 months">
+          </statcard>
         </v-flex>
         <v-flex>
-            <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer">
-                        <span class="display-2">300</span> <small>kgs</small><br>
-                        <small> Feeds last 30 days</small>
-                    </v-card-text>
-                </v-card>                
-            </div>
+          <statcard  value="300" unitf="kgs" comment="Feeds last 30 days">
+          </statcard>
         </v-flex>
         <v-flex>
-            <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer">
-                        <span class="display-1">5</span> <small>Cows sold</small><br>
-                        <small> last 12 months</small>
-                    </v-card-text>
-                </v-card>                
-            </div>
+          <statcard  value="5" unitf="Cows sold" comment="last 12 months">
+          </statcard>
         </v-flex>
         <v-flex>
-            <div class="headline">
-                <v-card  height="100" class="ma-1" color="green">
-                    <!-- <v-card-title>
-                       
-                    </v-card-title> -->
-                    <v-card-text @click="2" style="cursor:pointer;">
-                        <span class="display-1">1</span><small>cow</small><br>
-                        <small> died last year</small>
-                    </v-card-text>
-                </v-card>                
-            </div>
-        </v-flex>              
+          <statcard  value="1" unitf="cow" comment="died lasy year">
+          </statcard>
+        </v-flex>
     </v-layout>
    </v-card-text>
 </v-card>
@@ -94,8 +40,8 @@
        <!-- ---------Date picker  -------->
         <v-card  flat >
            <v-card-title style="justify-content:center;">
-        
-                <h2 style="color:green;">Milk Chart for the Month</h2> 
+
+                <h2 style="color:green;">Milk Chart for the Month</h2>
 
            </v-card-title>
            <v-layout row wrap>
@@ -110,7 +56,7 @@
                             transition="scale-transition"
                             offset-y
 
-                        
+
                         >
                             <v-text-field
                             slot="activator"
@@ -136,7 +82,7 @@
                         lazy
                         transition="scale-transition"
                         offset-y
-                        
+
                     >
                         <v-text-field
                         slot="activator"
@@ -211,7 +157,7 @@
               :size="100" :width="15":rotate="360":value="value"color="teal">
           {{ value }}
          </v-progress-circular>
-       </v-card-text>  
+       </v-card-text>
      </v-card>
     </v-flex>
 
@@ -228,7 +174,7 @@
               :size="100" :width="15":rotate="360":value="value"color="brown">
           {{ value }}
          </v-progress-circular>
-       </v-card-text>  
+       </v-card-text>
      </v-card>
    </v-flex>
    <v-flex xs12 sm4>
@@ -244,7 +190,7 @@
               :size="100" :width="15":rotate="360":value="value"color="blue">
           {{ value }}
          </v-progress-circular>
-       </v-card-text>  
+       </v-card-text>
      </v-card>
      <!-- end of pie charts -->
    </v-flex>
@@ -256,7 +202,7 @@
          <h2>Feed Summary For 30 days</h2>
        </v-card-title>
      </v-card>
-   </v-flex>  
+   </v-flex>
   </v-layout>
  </div>
 </template>

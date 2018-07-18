@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import Vuetify from 'vuetify'
 import router from './router'
-import 'vuetify/dist/vuetify.min.css' 
+import statcard from '@/components/Global_Components/Stat-Card'
+import 'vuetify/dist/vuetify.min.css'
 import VueLocalStorage from 'vue-localstorage'
 
 
@@ -14,7 +15,7 @@ import {sync} from 'vuex-router-sync'
 
 Vue.config.productionTip = false
 Vue.use(VueLocalStorage)
-
+Vue.component('statcard', statcard)
 Vue.use(Vuetify)
 sync(store,router) //sync the store and router
 /* eslint-disable no-new */

@@ -134,9 +134,9 @@
         <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.name }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
-        <td >{{ props.item.picture }}</td>
-        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px" class="text-xs-right"> <i class="material-icons">border_color</i></td>
-        <td @click="print(props.item.weight)"  class="text-xs-right" style="cursor:pointer" > <i class="material-icons">delete</i></td>
+        <td ><img :src="props.item.picture"  height="50px" width="50px"/></td>
+        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px; color:blue" class="text-xs-right"> <i class="material-icons">border_color</i></td>
+        <td @click="print(props.item.weight)"  class="text-xs-right" style="cursor:pointer; color:red" > <i class="material-icons">delete</i></td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Your search for "{{ search }}" found no results.
@@ -217,7 +217,7 @@ export default {
           name: "baringo",
           weight: 345,
           breed: "ashyre",
-          picture: "http/hshshhs/hdhdd",
+          picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
           date: "1/1/2009",
 
           delete: "Delete"
