@@ -22,6 +22,7 @@ import view_cow from '@/components/Cows_components/view_cow'
 
 // vaccinations
 import Vaccinations from '@/components/Vaccination_components/Vaccinations'
+
 import View_vaccine from '@/components/Vaccination_components/View_vaccine'
 
 //feeding records
@@ -78,19 +79,22 @@ export default new Router({
       component: Farmer,
       beforeEnter: requireAuth
     },
-    
+
     // cows routes
     {
-      path: '/view_cow',
+      path: '/view_cow/:slug',
       name: 'view_cow',
-      component: view_cow
+      component: view_cow,
+      props: true,
     },
     {
       path: '/cows',
       name: 'cows',
       component: Cows
     },
+
     //vaccination routes
+
     {
       path: '/vaccinations',
       name: 'Vaccinations',
@@ -131,7 +135,7 @@ export default new Router({
     },
 
   ],
-  // mode:'history',
+   mode:'history',
    hashbang:false
-  
+
 })

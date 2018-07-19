@@ -95,7 +95,7 @@ export default {
           email:  this.email,
           password:  this.password
       })
-      this.passmsg=null 
+      this.passmsg=null
       console.log(response.data)
       this.$store.dispatch('setToken', response.data.token)
       this.$router.push({name:"Dashboard"})
@@ -108,7 +108,7 @@ export default {
         this.err = error.response.data.error
         console.log(this.err)
       }
-     
+
     }
   }
 }

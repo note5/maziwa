@@ -24,23 +24,23 @@
               <v-flex xs12 >
                 <h3>Year the cow was born: </h3>
                 <v-text-field v-model="year_born"  hint="Add the year the cow was born"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>Weight of Cow: </h3>
                 <v-text-field  v-model="weight" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
                 <v-combobox  v-model="value"  ref="value" :items="items" chips label="Current state of the cow"
                     required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
                 </v-combobox>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <h3>Picture of the  Cow: </h3>
                 <input  type="file" @change="onFileChanged" >
                   <v-btn color="success" @click="onUpload">Upload!</v-btn>
-                   
+
                   <div class="image-preview" v-if="imageData.length > 0">
                    <div><h2>Name: {{cow_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData">
@@ -48,7 +48,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -82,21 +82,21 @@
               <v-flex xs12 >
                 <h3>Year the Cow was born: </h3>
                 <v-text-field  v-model="year_born_edit" required hint="Add the year the cow was born"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>Weight of the Cow: </h3>
                 <v-text-field  v-model="weight_edit" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
                 <v-combobox v-model="value_edit"  ref="value_edit" :items="items" chips label  required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
                 </v-combobox>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <input  type="file" @change="onFileChanged" >
                   <v-btn color="success" @click="onUpload">Upload!</v-btn>
-                   
+
                   <div class="image-preview" v-if="imageData_edit.length > 0">
                    <div><h2>Name: {{cow_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData_edit">
@@ -104,7 +104,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -120,7 +120,7 @@
     <v-card class="mt-2 mb-0">
       <v-card-title style="justify-content:center;"><h2 @click="navTo({name:'view_cow'})">Your Cows</h2>
       </v-card-title>
-      
+
     <div>
   <v-card>
     <v-card-title>
@@ -130,12 +130,12 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
-        <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.name }}</td>
+        <td @click="show_cow(props.item.name)" style="cursor:pointer">{{ props.item.name }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
-        <td >{{ props.item.picture }}</td>
-        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px" class="text-xs-right"> <i class="material-icons">border_color</i></td>
-        <td @click="print(props.item.weight)"  class="text-xs-right" style="cursor:pointer" > <i class="material-icons">delete</i></td>
+        <td ><img :src="props.item.picture"  height="50px" width="50px"/></td>
+        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px; color:blue" class="text-xs-right"> <i class="material-icons">border_color</i></td>
+        <td @click="print(props.item.weight)"  class="text-xs-right" style="cursor:pointer; color:red" > <i class="material-icons">delete</i></td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Your search for "{{ search }}" found no results.
@@ -162,6 +162,9 @@ export default {
   computed: {
     cows () {
       return this.$store.state.cows
+    },
+    headers () {
+      return this.$store.state.headers
     }
   },
   data() {
@@ -185,26 +188,7 @@ export default {
       value: [],
       value_edit: [],
       search: "",
-      headers: [
-        {
-          text: "Name of cow",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Weight (Kgs)", value: "weight" },
-        { text: "Breed", value: "breed" },
-        {
-          text: "Picture",
-          value: "picture",
-          sortable: false
-        },
-        { text: "Edit", value: "edit", sortable: false },
-        {
-          text: "Delete",
-          value: "delete",
-          sortable: false
-        }
-      ]      
+
     };
   },
   methods: {
@@ -225,12 +209,8 @@ export default {
       }
       this.imageData_edit = x.picture;
     },
-    show_cow(cow) {
-      this.$router.push({
-        name: "view_cow",
-
-        params: { cow: cow }
-      });
+    show_cow(slug) {
+      this.$router.push('view_cow/'+slug);
     },
     onFileChanged(event) {
       const file = event.target.files[0];
@@ -245,7 +225,7 @@ export default {
       console.log(this.selectedFile);
     }
   },
-  
+
 };
 </script>
 <style scoped>

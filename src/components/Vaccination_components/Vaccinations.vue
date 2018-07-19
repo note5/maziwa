@@ -23,22 +23,22 @@
                     required hint="which cow are you vaccinating? elect the check box to select all"  persistent-hint
                     multiple >
                 </v-combobox>
-              </v-flex> 
+              </v-flex>
               <v-flex xs12 >
                 <h3>Vet or company administering vaccination: </h3>
                 <v-text-field  v-model="vet_name" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                   <h3>Name of Vaccine: </h3>
                 <v-text-field  v-model="vaccine_name" required hint="what is the name of the vaccine give?" persistent-hint></v-text-field>
               </v-flex>
               <v-flex xs12>
                   <h3>Description of the Vaccine: </h3>
-                <v-textarea
+                <v-text-field
           name="input-7-1"
           hint="Brief description of the vaccine" persistent-hint
           v-model="text"
-        ></v-textarea>
+        ></v-text-field>
               </v-flex>
               <v-flex xs12 >
                 <h3>Date: </h3>
@@ -52,7 +52,7 @@
                             transition="scale-transition"
                             offset-y
 
-                        
+
                         >
                             <v-text-field
                             slot="activator"
@@ -67,10 +67,10 @@
                             <v-btn flat color="primary" @click="date_picked('menu',date)">OK</v-btn>
                             </v-date-picker>
                    </v-menu>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <h3>Picture of the vaccine: </h3>
-                <input  type="file" @change="onFileChanged" >                   
+                <input  type="file" @change="onFileChanged" >
                   <div class="image-preview" v-if="imageData.length > 0">
                    <div><h2>Name: {{vaccine_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData">
@@ -78,7 +78,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -111,23 +111,18 @@
                     required hint="which cow are you vaccinating? elect the check box to select all"  persistent-hint
                     multiple >
                 </v-combobox>
-              </v-flex> 
+              </v-flex>
               <v-flex xs12 >
                 <h3>Vet or company administering vaccination: </h3>
                 <v-text-field  v-model="vet_name_edit" required hint="Add the recent weight in kgs"  persistent-hint ></v-text-field>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                   <h3>Name of Vaccine: </h3>
                 <v-text-field  v-model="vaccine_name_edit" required hint="what is the name of the vaccine give?" persistent-hint></v-text-field>
               </v-flex>
               <v-flex xs12>
                   <h3>description of the Vaccine: </h3>
-                <v-textarea
-          name="input-7-1"
-          hint="Brief description of the vaccine" persistent-hint
-          v-model="text_edit"
-        
-        ></v-textarea>
+                <v-text-field    name="input-7-1"      hint="Brief description of the vaccine"persistent-hint           v-model="text_edit"></v-text-field>
               </v-flex>
               <v-flex xs12 >
                 <h3>Date: </h3>
@@ -141,7 +136,7 @@
                             transition="scale-transition"
                             offset-y
 
-                        
+
                         >
                             <v-text-field
                             slot="activator"
@@ -156,10 +151,10 @@
                             <v-btn flat color="primary" @click="date_picked('menu1',date1)">OK</v-btn>
                             </v-date-picker>
                    </v-menu>
-              </v-flex>  
+              </v-flex>
               <v-flex xs12>
                 <h3>Picture of the vaccine: </h3>
-                <input  type="file" @change="onFileChanged" >                   
+                <input  type="file" @change="onFileChanged" >
                   <div class="image-preview" v-if="imageData_edit.length > 0">
                    <div><h2>Name: {{vaccine_name}}</h2></div>
                 <img class="preview mt-2" :src="imageData_edit">
@@ -167,7 +162,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-           
+
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -180,7 +175,7 @@
   <!-- end of edit cow modal-->
    <v-layout row wrap>
   <v-flex xs12 sm12>
-    <v-card class="mt-2 mb-0">     
+    <v-card class="mt-2 mb-0">
     <div>
   <v-card>
     <v-card-title>
@@ -190,14 +185,14 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="vaccinations" :search="search"  >
       <template slot="items" slot-scope="props">
-        <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.vaccination ||"No entry" }}</td>
+        <td @click="show_cow(props.item.vaccination)" style="cursor:pointer">{{ props.item.cow }}</td>
         <td>{{ props.item.disease }}</td>
         <td>{{ props.item.cow[0] }}</td>
         <td>{{ props.item.vet }}</td>
         <td>{{ props.item.date }}</td>
-        <td>{{ props.item.picture }}</td>
-        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px" class="text-xs-right"> <i class="material-icons">border_color</i></td>
-        <td @click="print(props.item.cow)"  class="text-xs-right" style="cursor:pointer" > <i class="material-icons">delete</i></td>
+        <td><img :src="props.item.picture"  height="50px" width="50px"/></td>
+        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px; color:blue;" class="text-xs-right"> <i class="material-icons">border_color</i></td>
+        <td @click="print(props.item.cow)"  class="text-xs-right"  style="cursor:pointer;color:red" > <i class="material-icons">delete</i></td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Your search for "{{ search }}" found no results.
@@ -251,17 +246,17 @@ export default {
       search: "",
 
       headers: [
-        { text: "Vaccination", value: "vaccination", sortable: false },
-
+        { text: "Cow", value: "cow", sortable: true },
         {
           text: "Name of Disease",
-          sortable: false,
+          sortable: true,
           value: "disease"
         },
-        { text: "Cow", value: "cow", sortable: false },
-        { text: "Vet", value: "vet", sortable: false },
-        { text: "Date", value: "date" },
-        { text: "Picture", value: "picture" },
+        { text: "Vaccination", value: "vaccination", sortable: true },
+
+        { text: "Vet", value: "vet", sortable: true },
+        { text: "Date", value: "date", sortable: true },
+        { text: "Picture", value: "picture", sortable: false },
         { text: "Edit", value: "edit", sortable: false },
         {
           text: "Delete",
@@ -283,7 +278,8 @@ export default {
           disease: "ECF",
           cow: ["chelel"],
           vet: "mr doctor",
-          picture: "http/hshshhs/hdhdd",
+          vaccination: "my dawa",
+          picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
           date: "2018-07-22"
         },
         {
@@ -321,7 +317,7 @@ export default {
       this.date1 = x.date || "no entry";
       this.vaccine_name_edit = x.vaccination || "no entry";
       this.imageData_edit = x.picture || "no entry";
-      
+
     },
     onFileChanged(event) {
       const file = event.target.files[0];
