@@ -159,12 +159,12 @@ export default {
     return{
       drawer:false,
       sideNav: [
-        {to: '/milk_records', src: 'static/milk-can.svg', title: 'Milk' },
-        {to: '/feeding', src: 'static/hay.svg', title: 'Feeding' },
-        {to: '/inseminations', src: 'static/AI.svg', title: 'Inseminations' },
-        {to: '/births', src: 'static/cow-calf.svg', title: 'Births' },
-        {to: '/treatments', src: 'static/needle.svg', title: 'Treatments' },
-        {to: '/vaccinations', src: 'static/needle.svg', title: 'vaccinations' }
+        {to: '/milk_records', src: '/static/milk-can.svg', title: 'Milk' },
+        {to: '/feeding', src: '/static/hay.svg', title: 'Feeding' },
+        {to: '/inseminations', src: '/static/AI.svg', title: 'Inseminations' },
+        {to: '/births', src: '/static/cow-calf.svg', title: 'Births' },
+        {to: '/treatments', src: '/static/needle.svg', title: 'Treatments' },
+        {to: '/vaccinations', src: '/static/needle.svg', title: 'vaccinations' }
       ]
     }
   },

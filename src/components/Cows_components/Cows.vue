@@ -130,11 +130,14 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
+        <td>{{ props.item.id }}</td>
         <td @click="show_cow(props.item.name)" style="cursor:pointer">{{ props.item.name }}</td>
+        <td>{{ props.item.state[0] }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
         <td ><img :src="props.item.picture"  height="50px" width="50px"/></td>
-        <td @click="show(props.item)" style="cursor:pointer; margin-left:1px; color:blue" class="text-xs-right"> <i class="material-icons">border_color</i></td>
+        <td>{{ props.item.date }}</td>
+        <td @click="edit_cow(props.item)" style="cursor:pointer; margin-left:1px; color:blue" class="text-xs-right"> <i class="material-icons">border_color</i></td>
         <td @click="print(props.item.weight)"  class="text-xs-right" style="cursor:pointer; color:red" > <i class="material-icons">delete</i></td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -162,9 +165,6 @@ export default {
   computed: {
     cows () {
       return this.$store.state.cows
-    },
-    headers () {
-      return this.$store.state.headers
     }
   },
   data() {
@@ -188,8 +188,20 @@ export default {
       value: [],
       value_edit: [],
       search: "",
-
+      headers: [
+      { text: "Id",sortable: false,value: "id" },
+      { text: "Name of cow",sortable: false,value: "name" },
+      { text: "State of cow",sortable: false,value: "state" },
+      { text: "Weight (Kgs)", value: "weight" },
+      { text: "Breed", value: "breed" },
+      { text: "Picture",value: "picture",sortable: false},
+      { text: "Date", value: "date", sortable: false },
+      { text: "Edit", value: "edit", sortable: false },
+      {
+        text: "Delete",value: "delete",sortable: false }
+    ]
     };
+     
   },
   methods: {
     navTo({ name: route }) {
@@ -198,7 +210,7 @@ export default {
     print() {
       console.log("edit");
     },
-    show(x) {
+    edit_cow(x) {
       this.dialog_edit = true;
       this.cow_name_edit = x.name;
       this.breed_edit = x.breed;

@@ -15,26 +15,6 @@ export default new Vuex.Store({
     user:null,
     isLoggedIn: null,
     cow: null,
-    headers: [
-      {
-        text: "Name of cow",
-        sortable: false,
-        value: "name"
-      },
-      { text: "Weight (Kgs)", value: "weight" },
-      { text: "Breed", value: "breed" },
-      {
-        text: "Picture",
-        value: "picture",
-        sortable: false
-      },
-      { text: "Edit", value: "edit", sortable: false },
-      {
-        text: "Delete",
-        value: "delete",
-        sortable: false
-      }
-    ],
     cows: [
       {
         value: false,
@@ -45,6 +25,7 @@ export default new Vuex.Store({
         picture:
         "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
         date: "1/1/2009",
+        state: ["pregnant"],
         delete: "Delete"
       },
       {
@@ -53,9 +34,9 @@ export default new Vuex.Store({
         name: "baringo",
         weight: 345,
         breed: "ashyre",
-        picture: "http/hshshhs/hdhdd",
+        picture: "https://grassfood.files.wordpress.com/2015/05/dsc0207e.jpg",
         date: "1/1/2009",
-
+        state: ["dry"],
         delete: "Delete"
       },
       {
