@@ -31,10 +31,10 @@
               </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
-                <v-select auto v-model="value"  tags ref="value" :items="items" attach chips label="Current state of the cow"
+                <v-combobox  v-model="value"  ref="value" :items="items" chips label="Current state of the cow"
                     required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
-                </v-select>
+                </v-combobox>
               </v-flex>
               <v-flex xs12>
                 <h3>Picture of the  Cow: </h3>
@@ -89,10 +89,9 @@
               </v-flex>
               <v-flex xs12 >
                 <h3>State of the Cow: </h3>
-                <v-select auto v-model="value_edit"  tags ref="value_edit" :items="items" attach chips
-                    required hint="what is the current state of the cow?"  persistent-hint
+                <v-combobox v-model="value_edit"  ref="value_edit" :items="items" chips label  required hint="what is the current state of the cow?"  persistent-hint
                     multiple >
-                </v-select>
+                </v-combobox>
               </v-flex>
               <v-flex xs12>
                 <input  type="file" @change="onFileChanged" >
@@ -131,7 +130,7 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="cows" :search="search"  >
       <template slot="items" slot-scope="props">
-        <td @click="show_cow(props.item)" style="cursor:pointer">{{ props.item.name }}</td>
+        <td @click="show_cow(props.item.name)" style="cursor:pointer">{{ props.item.name }}</td>
         <td>{{ props.item.weight }}</td>
         <td>{{ props.item.breed }}</td>
         <td ><img :src="props.item.picture"  height="50px" width="50px"/></td>
@@ -160,6 +159,14 @@ export default {
       }, 50);
     }
   },
+  computed: {
+    cows () {
+      return this.$store.state.cows
+    },
+    headers () {
+      return this.$store.state.headers
+    }
+  },
   data() {
     return {
       cow_name: "",
@@ -181,60 +188,7 @@ export default {
       value: [],
       value_edit: [],
       search: "",
-      headers: [
-        {
-          text: "Name of cow",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Weight (Kgs)", value: "weight" },
-        { text: "Breed", value: "breed" },
-        {
-          text: "Picture",
-          value: "picture",
-          sortable: false
-        },
-        { text: "Edit", value: "edit", sortable: false },
-        {
-          text: "Delete",
-          value: "delete",
-          sortable: false
-        }
-      ],
-      cows: [
-        {
-          value: false,
-          name: "chelel",
-          weight: 408,
-          breed: "freshian",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          date: "1/1/2009",
-          delete: "Delete"
-        },
-        {
-          value: false,
-          name: "baringo",
-          weight: 345,
-          breed: "ashyre",
-          picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          date: "1/1/2009",
 
-          delete: "Delete"
-        },
-        {
-          value: false,
-          name: "mardadi",
-          weight: 287,
-          breed: "jersey",
-          picture:
-            "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
-          state: ["pregnant", "dry"],
-          date: "1/1/2009",
-
-          delete: "Delete"
-        }
-      ]
     };
   },
   methods: {
@@ -255,11 +209,8 @@ export default {
       }
       this.imageData_edit = x.picture;
     },
-    show_cow(cow) {
-      this.$router.push({
-        name: "view_cow",
-        params: { cow: cow }
-      });
+    show_cow(slug) {
+      this.$router.push('view_cow/'+slug);
     },
     onFileChanged(event) {
       const file = event.target.files[0];
@@ -273,7 +224,8 @@ export default {
       console.log("file", this.selectedFile);
       console.log(this.selectedFile);
     }
-  }
+  },
+
 };
 </script>
 <style scoped>

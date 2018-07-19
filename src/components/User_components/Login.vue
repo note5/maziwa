@@ -3,7 +3,6 @@
       <v-layout align-center>
         <v-flex xs12 sm6 offset-sm3>
           <v-card >
-      
              <v-card-title class="justify-center" primary-title>
                 <div class="headline">Put your Email and password to Login</div>
               </v-card-title>
@@ -25,9 +24,9 @@
                   type="password"
                   required
                 ></v-text-field>
+                <v-btn block  color="success" @click="login">Login</v-btn>
                  </v-form>
-              </v-card-text>
-            <v-btn block  color="success" @click="login">Login</v-btn>
+             </v-card-text>
       </v-card>
         </v-flex>
       </v-layout>
@@ -54,6 +53,13 @@ export default {
       ],
        checkbox: false
     }),
+    created(){ // add key binding events for pressing enter to submit the data
+     window.addEventListener('keydown', (e) => {
+      if (e.key == 'Enter') {
+        this.login();
+      }
+    })
+    },
     methods:{
       async login(){
         try{

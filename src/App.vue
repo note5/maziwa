@@ -3,17 +3,17 @@
     <v-navigation-drawer
       v-model="drawer"
       fixed
-     
+
       class="grey lighten-4 mt-5"
       width="250"
-      app 
+      app
 
       v-if="$store.state.isLoggedIn">
       <v-list dense class="grey lighten-4" >
         <template >
           <div>
             <v-subheader><h3 class="subheader_color">System User</h3></v-subheader>
-               <v-list-tile @click="navigateTo({'name':'/'})" >
+               <v-list-tile @click="navigateTo('/')" >
                   <v-list-tile-action>
                       <v-icon>home</v-icon>
                   </v-list-tile-action>
@@ -24,7 +24,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo({'name':'Login'})" >
+              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo('login')" >
                   <v-list-tile-action>
                       <v-icon>fingerprint</v-icon>
                   </v-list-tile-action>
@@ -35,7 +35,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo({'name':'Register'})" >
+              <v-list-tile v-if="!$store.state.isLoggedIn" @click="navigateTo('register')" >
                   <v-list-tile-action>
                       <v-icon>how_to_reg</v-icon>
                   </v-list-tile-action>
@@ -46,7 +46,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile @click="navigateTo({'name':'Dashboard'})" >
+              <v-list-tile @click="navigateTo('dashboard')" >
                   <v-list-tile-action>
                       <v-icon>dashboard</v-icon>
                   </v-list-tile-action>
@@ -70,10 +70,10 @@
         </div>
           <!--- Other componets of adding farmer, cow, milk etc-->
 
-          <v-divider dark class="my-3"></v-divider> 
-          <div>        
+          <v-divider dark class="my-3"></v-divider>
+          <div>
             <v-subheader><h3 class="subheader_color">Farmer's Details</h3></v-subheader>
-           <v-list-tile @click="navigateTo({'name':'farmer'})" >
+           <v-list-tile @click="navigateTo('/farmer')" >
                   <v-list-tile-action>
                    <div><img :src="require('@/assets/farmer.svg')" height="30"></div>
                   </v-list-tile-action>
@@ -84,30 +84,34 @@
                   </v-list-tile-content>
             </v-list-tile>
            <v-divider dark class="my-3"></v-divider>
-           <v-subheader><h3 class="subheader_color">Cows' Profiles</h3></v-subheader> 
-            <v-list-tile @click="navigateTo({'name':'cows'})" >
+           <v-subheader><h3 class="subheader_color">Cows' Profiles</h3></v-subheader>
+            <v-list-tile @click="navigateTo('/cows')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/cow1.svg')" height="30" width="30"></div>
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <v-list-tile-title>
-                       Cows 
+                       Cows
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
             <v-divider dark class="my-3"></v-divider>
-            <v-subheader><h3 class="subheader_color">Cow details</h3></v-subheader>  
-            <v-list-tile @click="navigateTo({'name':'feeding'})" >
+            <v-subheader>
+              <h3 class="subheader_color">Cow details</h3>
+            </v-subheader>
+            <v-list-tile style="text-decoration:none;color:black;":to="item.to" v-for="item,i in sideNav" :key="i">
                   <v-list-tile-action>
-                 <div><img :src="require('@/assets/hay.svg')" height="30" width="30"></div>
+                 <div>
+                   <img :src="item.src" height="30" width="30">
+                 </div>
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <v-list-tile-title>
-                       Feeding Records
+                       {{item.title}}
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'milk'})" >
+            <!-- <v-list-tile @click="navigateTo('/milk_records')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/milk-can.svg')" height="30"></div>
                   </v-list-tile-action>
@@ -117,7 +121,7 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'inseminations'})" >
+            <v-list-tile @click="navigateTo('/inseminations')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/AI.svg')" height="30"></div>
                   </v-list-tile-action>
@@ -127,7 +131,7 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'births'})" >
+            <v-list-tile @click="navigateTo('/births')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/cow-calf.svg')" height="30" width="30"></div>
                   </v-list-tile-action>
@@ -137,10 +141,10 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'treatments'})" >
+            <v-list-tile @click="navigateTo('/treatments')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/needle.svg')" height="30"></div>
-                 
+
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <v-list-tile-title>
@@ -148,7 +152,7 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile @click="navigateTo({'name':'Vaccinations'})" >
+            <v-list-tile @click="navigateTo('/vaccinations')" >
                   <v-list-tile-action>
                  <div><img :src="require('@/assets/needle.svg')" height="30"></div>
                   </v-list-tile-action>
@@ -157,7 +161,7 @@
                        Vaccinations
                    </v-list-tile-title>
                   </v-list-tile-content>
-            </v-list-tile>
+            </v-list-tile> -->
           </div>
         </template>
       </v-list>
@@ -174,9 +178,9 @@
     </v-toolbar-items>
     </v-toolbar>
     <v-content>
-      <v-container  fluid  fill-height>  
+      <v-container  fluid  fill-height>
         <v-layout row wrap>
-          <v-flex xs12>      
+          <v-flex xs12>
              <router-view></router-view>
           </v-flex>
         </v-layout>
@@ -191,7 +195,7 @@
 <script>
 export default {
   methods:{
-    navigateTo({"name":route}){
+    navigateTo(route){
       this.$router.push(route)
       //console.log('pressed',route)
     },
@@ -204,7 +208,13 @@ export default {
   },
   data(){
     return{
-      drawer:false
+      drawer:false,
+      sideNav: [
+        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
+        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
+        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
+        {to: '/cows', src: 'static/AI.svg', title: 'Cows' }
+      ]
     }
   },
   computed: {

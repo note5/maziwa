@@ -25,6 +25,15 @@ import Vaccinations from '@/components/Vaccination_components/Vaccinations'
 
 import View_vaccine from '@/components/Vaccination_components/View_vaccine'
 
+//feeding records
+import Feeding from '@/components/Feeding_components/Feeding'
+import View_cow_feed from '@/components/Feeding_components/View_cow_feed'
+//milk records
+import Milk_records from '@/components/Milk_components/Milk_records'
+import view_milk from '@/components/Milk_components/view_milk'
+//AI
+import Insemination from '@/components/Ai_components/Insemination'
+
 Vue.use(Router)
 function requireAuth (to, from, next) {
   if ( store.state.token) {
@@ -73,9 +82,10 @@ export default new Router({
 
     // cows routes
     {
-      path: '/view_cow',
+      path: '/view_cow/:slug',
       name: 'view_cow',
-      component: view_cow
+      component: view_cow,
+      props: true,
     },
     {
       path: '/cows',
@@ -94,9 +104,38 @@ export default new Router({
       path: '/vaccine',
       name: 'view_vaccine',
       component: View_vaccine
-    }
+    },
+    //feeding records
+    {
+      path: '/feeding',
+      name: 'Feeding',
+      component: Feeding
+    },
+    {
+      path: '/view_cow_feed',
+      name: 'View_cow_feed',
+      component: View_cow_feed
+    },
+    //milk records
+    {
+      path:'/milk_records',
+      name:'Milk_records',
+      component:Milk_records
+    },
+    {
+      path:'/view_milk',
+      name:'view_milk',
+      component:view_milk
+    },
+    //AI
+    {
+      path:'/inseminations',
+      name:'Insemination',
+      component:Insemination
+    },
+
   ],
-  // mode:'history',
+   mode:'history',
    hashbang:false
 
 })

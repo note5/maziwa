@@ -19,7 +19,10 @@
               </v-flex>
               <v-flex xs12>
                 <h3>Name of the cow: </h3><v-checkbox   :label="` All the cows`"    v-model="checkbox"></v-checkbox>
-                <v-text-field v-model="cow" required hint="Which cow is ailing?" persistent-hint></v-text-field>
+               <v-combobox  v-model="cow"  ref="cow" :items="items" chips label="Name of the cow"
+                    required hint="which cow are you vaccinating? elect the check box to select all"  persistent-hint
+                    multiple >
+                </v-combobox>
               </v-flex>
               <v-flex xs12 >
                 <h3>Vet or company administering vaccination: </h3>
@@ -104,7 +107,10 @@
               </v-flex>
               <v-flex xs12>
                 <h3>Name of the cow: </h3><v-checkbox   :label="` All the cows`"    v-model="checkbox1"></v-checkbox>
-                <v-text-field v-model="cow_edit" required hint="Which cow is ailing?" persistent-hint></v-text-field>
+                <v-combobox  v-model="cow_edit"  ref="cow_edit" :items="items" chips label="Name of the cow"
+                    required hint="which cow are you vaccinating? elect the check box to select all"  persistent-hint
+                    multiple >
+                </v-combobox>
               </v-flex>
               <v-flex xs12 >
                 <h3>Vet or company administering vaccination: </h3>
@@ -181,7 +187,7 @@
       <template slot="items" slot-scope="props">
         <td @click="show_cow(props.item.vaccination)" style="cursor:pointer">{{ props.item.cow }}</td>
         <td>{{ props.item.disease }}</td>
-        <td >{{ props.item.vaccination ||"No entry" }}</td>
+        <td>{{ props.item.cow[0] }}</td>
         <td>{{ props.item.vet }}</td>
         <td>{{ props.item.date }}</td>
         <td><img :src="props.item.picture"  height="50px" width="50px"/></td>
@@ -203,11 +209,17 @@
 
 <script>
 export default {
+  watch:{
+  checkbox: function see(){
+    console.log(this.checkbox)
+  }
+  },
   data() {
     return {
       //modal v-model
       disease_name: "",
-      cow: "",
+      items: ["Mardadi", "Ravine", "Chelel", "Solian","Mochongi", "Rongai"],
+      cow: [],
       vet_name: "",
       date: "",
       menu: "",
@@ -217,7 +229,7 @@ export default {
       checkbox: false,
       //edit modal values
       disease_name_edit: "",
-      cow_edit: "",
+      cow_edit:[],
       vet_name_edit: "",
       menu1: "",
       date1: "",
@@ -255,7 +267,7 @@ export default {
       vaccinations: [
         {
           disease: "RVF",
-          cow: "Mardadi",
+          cow: ["Mardadi","Rongai"],
           vet: "mrs erol",
           vaccination: "my dawa",
           picture:
@@ -264,7 +276,7 @@ export default {
         },
         {
           disease: "ECF",
-          cow: "chelel",
+          cow: ["chelel"],
           vet: "mr doctor",
           vaccination: "my dawa",
           picture: "https://media.mnn.com/assets/images/2017/01/cow-in-pasture.jpg.838x0_q80.jpg",
@@ -272,7 +284,7 @@ export default {
         },
         {
           disease: "Liver flukes",
-          cow: "Baringo",
+          cow: ["Baringo","Mardadi"],
           vet: "mr bart",
           vaccination: "my dawa",
           picture:
@@ -305,7 +317,7 @@ export default {
       this.date1 = x.date || "no entry";
       this.vaccine_name_edit = x.vaccination || "no entry";
       this.imageData_edit = x.picture || "no entry";
-      console.log(this.date1 + " hdhdh menu:" + this.menu1);
+
     },
     onFileChanged(event) {
       const file = event.target.files[0];
