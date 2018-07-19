@@ -46,7 +46,7 @@
                   </v-list-tile-content>
               </v-list-tile>
 
-              <v-list-tile @click="navigateTo('dashboard')" >
+              <v-list-tile @click="navigateTo('/dashboard')" >
                   <v-list-tile-action>
                       <v-icon>dashboard</v-icon>
                   </v-list-tile-action>
@@ -99,7 +99,7 @@
             <v-subheader>
               <h3 class="subheader_color">Cow details</h3>
             </v-subheader>
-            <v-list-tile style="text-decoration:none;color:black;":to="item.to" v-for="item,i in sideNav" :key="i">
+            <v-list-tile style="text-decoration:none;color:black;" :to="item.to" v-for="item,i in sideNav" :key="i">
                   <v-list-tile-action>
                  <div>
                    <img :src="item.src" height="30" width="30">
@@ -111,57 +111,6 @@
                    </v-list-tile-title>
                   </v-list-tile-content>
             </v-list-tile>
-            <!-- <v-list-tile @click="navigateTo('/milk_records')" >
-                  <v-list-tile-action>
-                 <div><img :src="require('@/assets/milk-can.svg')" height="30"></div>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                       Milk Records
-                   </v-list-tile-title>
-                  </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile @click="navigateTo('/inseminations')" >
-                  <v-list-tile-action>
-                 <div><img :src="require('@/assets/AI.svg')" height="30"></div>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                       Insemination Records
-                   </v-list-tile-title>
-                  </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile @click="navigateTo('/births')" >
-                  <v-list-tile-action>
-                 <div><img :src="require('@/assets/cow-calf.svg')" height="30" width="30"></div>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                       Birth Records
-                   </v-list-tile-title>
-                  </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile @click="navigateTo('/treatments')" >
-                  <v-list-tile-action>
-                 <div><img :src="require('@/assets/needle.svg')" height="30"></div>
-
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                       Treatment Records
-                   </v-list-tile-title>
-                  </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile @click="navigateTo('/vaccinations')" >
-                  <v-list-tile-action>
-                 <div><img :src="require('@/assets/needle.svg')" height="30"></div>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                       Vaccinations
-                   </v-list-tile-title>
-                  </v-list-tile-content>
-            </v-list-tile> -->
           </div>
         </template>
       </v-list>
@@ -210,10 +159,12 @@ export default {
     return{
       drawer:false,
       sideNav: [
-        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
-        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
-        {to: '/cows', src: 'static/AI.svg', title: 'Cows' },
-        {to: '/cows', src: 'static/AI.svg', title: 'Cows' }
+        {to: '/milk_records', src: 'static/milk-can.svg', title: 'Milk' },
+        {to: '/feeding', src: 'static/hay.svg', title: 'Feeding' },
+        {to: '/inseminations', src: 'static/AI.svg', title: 'Inseminations' },
+        {to: '/births', src: 'static/cow-calf.svg', title: 'Births' },
+        {to: '/treatments', src: 'static/needle.svg', title: 'Treatments' },
+        {to: '/vaccinations', src: 'static/needle.svg', title: 'vaccinations' }
       ]
     }
   },
